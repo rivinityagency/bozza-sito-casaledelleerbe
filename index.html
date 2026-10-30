@@ -3,20 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Il Casale delle Erbe · Erbe officinali, tisane e miele bio · Bolzano Vicentino</title>
-<meta name="description" content="Fattoria biologica e bottega a Bolzano Vicentino (VI): erbe officinali coltivate ed essiccate da noi, tisane, mieli, verdura di stagione a km 0 e fattoria didattica. Via Cafarette 6.">
+<title>Il Casale delle Erbe · Tisane, miele e orto biologico a Bolzano Vicentino</title>
+<meta name="description" content="Fattoria biologica ed erboristeria in Via Cafarette 6 a Bolzano Vicentino (VI): erbe officinali coltivate ed essiccate da noi, tisane, mieli, verdura e fiori di stagione, visite in fattoria.">
+<meta name="theme-color" content="#0a47f0">
 <link rel="icon" href="assets/fiore.png" type="image/png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/gloock-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/schibsted-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<script>document.documentElement.classList.add('js')</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Store",
   "name": "Il Casale delle Erbe",
-  "description": "Azienda agricola biologica ed erboristeria: erbe officinali, tisane, mieli, verdura di stagione a km 0, fattoria didattica e sociale.",
+  "description": "Azienda agricola biologica ed erboristeria: erbe officinali, tisane, mieli, verdura e fiori di stagione, fattoria didattica e sociale.",
   "telephone": "+39 0444 350329",
   "email": "info@ilcasaledelleerbe.it",
+  "logo": "assets/logo-circolare.png",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Via Cafarette 6",
@@ -29,9 +31,17 @@
 }
 </script>
 <style>
+@font-face{font-family:"Gloock";src:url(assets/fonts/gloock-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Schibsted Grotesk";src:url(assets/fonts/schibsted-grotesk-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Schibsted Grotesk";src:url(assets/fonts/schibsted-grotesk-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Schibsted Grotesk";src:url(assets/fonts/schibsted-grotesk-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
+
 :root{
-  --blu:#0a47f0;        /* anello del logo */
-  --blu-scuro:#06258a;
+  /* i colori vengono dal logo: anello blu, carta bianca, inchiostro nero, otto petali */
+  --blu:#0a47f0;
+  --carta:#ffffff;
+  --inchiostro:#15161a;
+  --inchiostro-2:#45474f;
   --celeste:#8db8e8;
   --crema:#fbe3a9;
   --rosa:#f9aedf;
@@ -40,470 +50,536 @@
   --arancio:#faa445;
   --verde:#69d088;
   --corallo:#ff5a6e;
-  --carta:#fffaf0;
-  --inchiostro:#16181d;
-  --grigio:#5a5f6b;
-  --linea:#e9e2d0;
-  --r:22px;
+
+  --m:clamp(16px, 2.2vw, 28px);
+  --sez:clamp(72px, 9vw, 136px);
+
+  --step-small:clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+  --step-body:clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --step-lead:clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --step-head:clamp(2.5rem, 1.5rem + 3.4vw, 4.25rem);
+
+  --ease:cubic-bezier(.16,1,.3,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:80px}
-body{background:var(--carta);color:var(--inchiostro);font:400 17px/1.6 Outfit,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-img{display:block;max-width:100%}
-a{color:inherit}
-h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;line-height:1.08;letter-spacing:-.01em}
-h1 em,h2 em{font-style:italic;font-weight:400}
-.wrap{width:min(1180px,100% - 32px);margin-inline:auto}
-.etichetta{display:inline-flex;align-items:center;gap:8px;font:600 13px/1 Outfit,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--blu)}
-.etichetta svg{width:18px;height:18px}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 24px;border-radius:999px;font-weight:600;text-decoration:none;transition:transform .2s,background .2s,color .2s;border:2px solid var(--blu)}
-.btn:hover{transform:translateY(-2px)}
-.btn-pieno{background:var(--blu);color:#fff}
-.btn-pieno:hover{background:var(--blu-scuro);border-color:var(--blu-scuro)}
-.btn-vuoto{color:var(--blu);background:transparent}
-.btn-vuoto:hover{background:var(--blu);color:#fff}
-.btn svg{width:18px;height:18px}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--blu);color:var(--inchiostro);font:400 var(--step-body)/1.5 "Schibsted Grotesk",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-underline-offset:.2em;text-decoration-thickness:1px}
+h1,h2,h3{font-family:"Gloock",Georgia,serif;font-weight:400;letter-spacing:-.02em;line-height:.98;text-wrap:balance}
+h2{font-size:var(--step-head)}
+p{text-wrap:pretty}
+::selection{background:var(--giallo);color:var(--inchiostro)}
+:focus-visible{outline:3px solid var(--giallo);outline-offset:3px}
+.carta :focus-visible{outline-color:var(--blu)}
 
-/* foto: se il file non c'è ancora resta lo sfondo a petali */
-.foto{position:relative;border-radius:var(--r);overflow:hidden;background:var(--sf, var(--crema))}
-.foto img{width:100%;height:100%;object-fit:cover}
-.foto::before{content:"";position:absolute;inset:0;background:url(assets/fiore.png) center/45% no-repeat;opacity:.5}
-.foto img{position:relative}
+/* bottone: rettangolo pieno, angoli vivi, un solo stile su tutta la pagina */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;background:var(--blu);color:var(--carta);font:500 var(--step-body)/1 "Schibsted Grotesk",sans-serif;text-decoration:none;border:0;cursor:pointer;transition:transform .35s var(--ease),background-color .2s}
+.btn:hover{background:var(--inchiostro)}
+.btn:active{transform:scale(.97)}
+.btn svg{width:20px;height:20px;flex:none}
 
-/* HEADER */
-header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--carta) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .3s}
-header.scorre{border-color:var(--linea)}
-.barra{display:flex;align-items:center;justify-content:space-between;height:72px;gap:20px}
-.marchio{display:flex;align-items:center;gap:12px;text-decoration:none}
-.marchio img{width:48px;height:48px}
-.marchio b{font:600 19px/1.05 Fraunces,serif;display:block}
-.marchio small{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--grigio)}
-nav ul{display:flex;gap:28px;list-style:none}
-nav a{text-decoration:none;font-weight:500;font-size:15px;position:relative}
-nav a::after{content:"";position:absolute;left:0;right:100%;bottom:-4px;height:2px;background:var(--blu);transition:right .25s}
-nav a:hover::after{right:0}
-.barra .btn{padding:10px 18px;font-size:15px}
-.menu-btn{display:none;background:none;border:0;width:44px;height:44px;cursor:pointer}
-.menu-btn span{display:block;width:24px;height:2px;background:var(--inchiostro);margin:5px auto;transition:.25s}
+/* la fascia a otto colori: i petali del logo in fila, come il nastro di un'etichetta */
+.fascia{display:flex;height:56px;overflow:hidden}
+.fascia i{flex:0 0 28px}
+.fascia i:nth-child(8n+1){background:var(--celeste)}
+.fascia i:nth-child(8n+2){background:var(--crema)}
+.fascia i:nth-child(8n+3){background:var(--rosa)}
+.fascia i:nth-child(8n+4){background:var(--verde)}
+.fascia i:nth-child(8n+5){background:var(--corallo)}
+.fascia i:nth-child(8n+6){background:var(--arancio)}
+.fascia i:nth-child(8n+7){background:var(--giallo)}
+.fascia i:nth-child(8n+8){background:var(--vino)}
 
-/* HERO */
-.hero{padding:56px 0 80px}
-.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
-.hero h1{font-size:clamp(42px,6.2vw,80px);margin:18px 0 22px}
-.hero h1 em{color:var(--blu)}
-.hero p.lead{font-size:20px;color:var(--grigio);max-width:520px}
-.hero .azioni{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
-.hero-foto{position:relative}
-.hero-foto .foto{aspect-ratio:4/5;--sf:var(--giallo)}
-.timbro{position:absolute;left:-44px;bottom:-36px;width:150px;height:150px;border-radius:50%;background:#fff;box-shadow:0 14px 40px rgba(10,71,240,.18);animation:gira 40s linear infinite}
-.timbro img{width:100%;height:100%;border-radius:50%}
-@keyframes gira{to{transform:rotate(360deg)}}
-.nota-hero{position:absolute;right:-14px;top:28px;background:#fff;border-radius:16px;padding:12px 16px;box-shadow:0 10px 30px rgba(0,0,0,.08);font-size:14px;display:flex;align-items:center;gap:10px;font-weight:500}
-.nota-hero i{width:10px;height:10px;border-radius:50%;background:var(--verde);box-shadow:0 0 0 4px color-mix(in srgb,var(--verde) 30%,transparent)}
+/* bordi tagliati della carta, disegnati come forme piene */
+.smerlo{height:18px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='18'%3E%3Cpath d='M0 0h36a18 18 0 0 1-36 0z' fill='%23fff'/%3E%3C/svg%3E") 0 0/36px 18px repeat-x}
+.smerlo.su{transform:scaleY(-1)}
+.zigzag{height:16px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='16'%3E%3Cpath d='M0 0h24L12 16z' fill='%23fff'/%3E%3C/svg%3E") 0 0/24px 16px repeat-x}
+.perfora{height:0;border-top:5px dotted var(--blu);opacity:.55}
 
-/* NASTRO */
-.nastro{background:var(--blu);color:#fff;overflow:hidden;padding:18px 0}
-.nastro div{display:flex;gap:44px;width:max-content;animation:scorri 32s linear infinite;font:400 22px/1 Fraunces,serif;font-style:italic}
-.nastro span{display:flex;align-items:center;gap:44px;white-space:nowrap}
-.nastro img{width:22px;height:22px}
-@keyframes scorri{to{transform:translateX(-50%)}}
+/* ---------- PRIMA SCHERMATA: l'etichetta accanto al campo ---------- */
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:var(--m);min-height:100svh}
+.etichetta{min-width:0;background:var(--carta);display:flex;flex-direction:column;min-height:calc(100svh - 2*var(--m))}
+.etichetta .dentro{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:clamp(28px,4vw,56px) clamp(24px,4vw,64px) 28px}
+.etichetta .logo{width:clamp(150px,15vw,230px);margin-bottom:clamp(20px,2.4vw,32px)}
+.etichetta h1{font-size:clamp(2.5rem, 1.4rem + 2.6vw, 4rem);max-width:12ch;margin-bottom:28px}
+.etichetta .frase{max-width:36ch;margin-bottom:32px}
+.etichetta nav{margin-top:auto;padding-top:40px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 28px;font-size:var(--step-small)}
+.etichetta nav a{font-weight:500;padding:10px 0}
+.foto-hero{position:sticky;top:var(--m);height:calc(100svh - 2*var(--m));overflow:hidden;background:var(--verde)}
+.foto-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.6s ease}
+.foto-hero img.on{opacity:1}
 
-section{padding:110px 0}
-.titolo-sez{max-width:720px;margin-bottom:56px}
-.titolo-sez h2{font-size:clamp(34px,4.4vw,56px);margin:14px 0 18px}
-.titolo-sez p{color:var(--grigio);font-size:19px}
+/* ---------- LA LETTERA ---------- */
+.lettera{padding:var(--sez) var(--m)}
+.foglio{width:min(680px,100%);margin-inline:auto}
+.foglio .carta{background:var(--carta);padding:clamp(28px,5vw,64px)}
+.foglio h2{margin-bottom:36px}
+.foglio p+p{margin-top:1.1em}
+.foglio mark{background:var(--giallo);color:inherit;padding:0 .15em}
+.firma{margin-top:36px;display:flex;align-items:center;gap:16px}
+.firma img{width:56px;height:56px}
+.firma b{display:block;font:italic 400 1.375rem/1.2 "Schibsted Grotesk",sans-serif}
+.firma span{font-size:var(--step-small);color:var(--inchiostro-2)}
+.strappo{background:var(--carta);padding:0 clamp(28px,5vw,64px)}
+.strappo .riga{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;min-height:84px;padding:16px 0}
+.strappo a{font-weight:500}
 
-/* FATTORIA */
-.fattoria .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;align-items:center}
-.fattoria .collage{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.fattoria .collage .foto{aspect-ratio:3/4;--sf:var(--arancio)}
-.fattoria .collage .foto:last-child{margin-top:64px;--sf:var(--verde)}
-.numeri{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
-.numeri div{border-top:2px solid var(--inchiostro);padding-top:14px}
-.numeri b{font:600 40px/1 Fraunces,serif;display:block;margin-bottom:6px}
-.numeri span{font-size:14px;color:var(--grigio)}
-.fattoria p+p{margin-top:16px}
-.fattoria .testo>p{font-size:18px}
+/* ---------- LO SCONTRINO DELLA TISANA ---------- */
+.viaggio{background:var(--verde);padding:var(--sez) var(--m)}
+.viaggio .griglia{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;max-width:1240px;margin-inline:auto;align-items:start}
+.viaggio .testa{grid-column:1/6}
+.viaggio .testa h2{margin-bottom:28px;max-width:10ch}
+.viaggio .testa p{max-width:30ch;font-size:var(--step-lead);line-height:1.35}
+.scontrino{grid-column:7/12;font-size:1rem}
+.scontrino .carta{background:var(--carta);padding:32px clamp(22px,3vw,36px) 28px}
+.scontrino h3{font:600 1rem/1.3 "Schibsted Grotesk",sans-serif;letter-spacing:0;margin:28px 0 10px}
+.scontrino h3:first-child{margin-top:0}
+.voce{display:flex;align-items:baseline;gap:10px;padding:6px 0}
+.voce .punti{flex:1;min-width:24px;height:4px;align-self:center;margin-top:6px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='4'%3E%3Ccircle cx='2' cy='2' r='2' fill='%2315161a'/%3E%3C/svg%3E") 0 0/8px 4px repeat-x}
+.voce em{font-style:normal;white-space:nowrap;font-variant-numeric:tabular-nums}
+.totale{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:44px;padding:8px 14px;margin-top:24px;background:var(--inchiostro);color:var(--carta);font-weight:500}
 
-/* FILIERA */
-.filiera{background:#fff;border-block:1px solid var(--linea)}
-.passi{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:p}
-.passo{padding:30px 26px;border-radius:var(--r);background:var(--c);position:relative;min-height:250px;display:flex;flex-direction:column}
-.passo::before{counter-increment:p;content:"0" counter(p);font:600 15px/1 Outfit;letter-spacing:.1em;opacity:.6}
-.passo h3{font-size:28px;margin:auto 0 10px}
-.passo p{font-size:15.5px;line-height:1.5}
-.passo:nth-child(1){--c:var(--verde)}
-.passo:nth-child(2){--c:var(--giallo)}
-.passo:nth-child(3){--c:var(--arancio)}
-.passo:nth-child(4){--c:var(--celeste)}
+/* ---------- QUESTO MESE: il foglio stampato ---------- */
+.mese{padding:var(--sez) var(--m)}
+.mese .griglia{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;max-width:1240px;margin-inline:auto;align-items:start}
+.mese .testa{grid-column:1/6;color:var(--carta);position:sticky;top:40px}
+.mese .testa h2{margin-bottom:24px;max-width:11ch}
+.mese .testa p{max-width:34ch;margin-bottom:32px}
+.mesi{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;max-width:420px}
+.mesi button{min-height:48px;background:rgba(255,255,255,.14);color:var(--carta);border:0;font:500 var(--step-small)/1 "Schibsted Grotesk",sans-serif;cursor:pointer;transition:background-color .2s,color .2s,transform .3s var(--ease)}
+.mesi button:hover{background:rgba(255,255,255,.28)}
+.mesi button:active{transform:scale(.94)}
+.mesi button[aria-pressed="true"]{background:var(--carta);color:var(--blu)}
+.menu{grid-column:7/13}
+.menu .carta{background:var(--carta);padding:clamp(28px,5vw,64px) clamp(22px,4vw,56px);text-align:center}
+.menu h3.titolo{font-size:clamp(2.25rem,1.6rem+1.6vw,3rem);margin-bottom:10px}
+.menu .nota{font-size:var(--step-small);color:var(--inchiostro-2);margin-bottom:12px}
+.gruppo{margin-top:52px;max-width:440px;margin-inline:auto;text-align:left}
+.gruppo h4{font:400 1.375rem/1.1 "Gloock",serif;text-align:center;margin-bottom:18px}
+.gruppo ul{list-style:none;display:grid;gap:14px}
+.gruppo li{display:flex;justify-content:space-between;gap:16px;align-items:baseline}
+.gruppo li span:last-child{font-size:var(--step-small);color:var(--inchiostro-2);text-align:right;white-space:nowrap}
+.gruppo li small{display:block;font-size:var(--step-small);color:var(--inchiostro-2)}
+.gruppo .vuoto{text-align:center;color:var(--inchiostro-2);font-size:1rem}
+.orari{margin-top:52px;font-size:1rem}
+.orari a{font-weight:600}
+#lista-mese{transition:opacity .25s}
+#lista-mese.cambia{opacity:0}
 
-/* BOTTEGA */
-.scaffale{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.prodotto{background:#fff;border:1px solid var(--linea);border-radius:var(--r);padding:28px;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column;gap:12px}
-.prodotto:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(22,24,29,.07)}
-.prodotto .ico{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:var(--c)}
-.prodotto .ico svg{width:30px;height:30px}
-.prodotto h3{font-size:25px}
-.prodotto p{color:var(--grigio);font-size:15.5px}
-.prodotto.grande{grid-column:span 2;flex-direction:row;padding:0;overflow:hidden;align-items:stretch}
-.prodotto.grande .foto{flex:1 1 50%;border-radius:0;min-height:300px;--sf:var(--corallo)}
-.prodotto.grande .dentro{flex:1 1 50%;padding:32px;display:flex;flex-direction:column;gap:12px;justify-content:center}
-.chip{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
-.chip span{font-size:13px;padding:6px 12px;border-radius:999px;background:var(--carta);border:1px solid var(--linea)}
+/* ---------- DAL CAMPO: foto con cartellino ---------- */
+.campo{background:var(--carta);padding:var(--sez) var(--m)}
+.campo .dentro{max-width:1240px;margin-inline:auto}
+.campo .testa{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;margin-bottom:48px;align-items:end}
+.campo h2{grid-column:1/7}
+.campo .testa p{grid-column:8/13;max-width:40ch}
+.tessere{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 12px}
+.tessera{display:flex;flex-direction:column}
+.tessera .img{aspect-ratio:4/5;overflow:hidden;background:var(--crema)}
+.tessera img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.tessera:hover img{transform:scale(1.04)}
+.cartellino{min-height:92px;padding:14px 16px;font-size:var(--step-small);display:grid;align-content:start;gap:6px;background:var(--fondo);color:var(--testo)}
+.cartellino .r1{display:flex;justify-content:space-between;gap:8px;font-weight:600;font-size:1rem}
+.cartellino .r2{display:flex;justify-content:space-between;gap:8px}
+.tessera:nth-child(1){--fondo:var(--blu);--testo:var(--carta)}
+.tessera:nth-child(2){--fondo:var(--giallo);--testo:var(--inchiostro)}
+.tessera:nth-child(3){--fondo:var(--vino);--testo:var(--carta)}
+.tessera:nth-child(4){--fondo:var(--verde);--testo:var(--inchiostro)}
+.tessera:nth-child(5){--fondo:var(--inchiostro);--testo:var(--carta)}
+.tessera:nth-child(6){--fondo:var(--rosa);--testo:var(--inchiostro)}
 
-/* FIORI */
-.fiori{background:var(--vino);color:#fff}
-.fiori .wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-.fiori .etichetta{color:var(--rosa)}
-.fiori h2{font-size:clamp(34px,4.4vw,56px);margin:14px 0 20px}
-.fiori p{color:#ffe3ee;font-size:18px}
-.fiori .coppia{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.fiori .coppia .foto{aspect-ratio:3/4;--sf:var(--arancio)}
-.fiori .coppia .foto:last-child{margin-top:56px;--sf:var(--rosa)}
+/* ---------- VISITE: il biglietto ---------- */
+.visite{background:var(--vino);padding:var(--sez) var(--m)}
+.biglietto{max-width:1080px;margin-inline:auto;display:grid;grid-template-columns:1fr auto 300px;background:var(--carta);
+  clip-path:polygon(0 0,calc(100% - 330px) 0,calc(100% - 318px) 14px,calc(100% - 306px) 0,100% 0,100% 100%,calc(100% - 306px) 100%,calc(100% - 318px) calc(100% - 14px),calc(100% - 330px) 100%,0 100%)}
+.biglietto .corpo{padding:clamp(28px,4.5vw,56px)}
+.biglietto h2{margin-bottom:24px;max-width:11ch}
+.biglietto .corpo p{max-width:46ch}
+.biglietto ul{list-style:none;margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:10px 28px;font-size:1rem}
+.biglietto li{display:flex;gap:10px;align-items:baseline}
+.biglietto li::before{content:"";flex:none;width:10px;height:10px;border-radius:50%;background:var(--verde);transform:translateY(-1px)}
+.biglietto li:nth-child(2)::before{background:var(--giallo)}
+.biglietto li:nth-child(3)::before{background:var(--corallo)}
+.biglietto li:nth-child(4)::before{background:var(--celeste)}
+.biglietto .taglio{width:0;border-left:5px dotted var(--vino);margin:22px 12px;opacity:.6}
+.biglietto .matrice{padding:clamp(28px,3.5vw,44px);display:flex;flex-direction:column;justify-content:space-between;gap:24px;text-align:center;align-items:center}
+.biglietto .matrice img{width:120px}
+.biglietto .matrice p{font-size:1rem}
+.biglietto .matrice .btn{width:100%}
 
-/* DIDATTICA */
-.didattica .scheda{display:grid;grid-template-columns:1fr 1fr;border-radius:32px;overflow:hidden;background:var(--crema)}
-.didattica .scheda>div{padding:56px}
-.didattica .lato{background:var(--verde);display:flex;flex-direction:column;gap:18px;justify-content:center}
-.didattica h2{font-size:clamp(32px,4vw,50px);margin:14px 0 18px}
-.lista{list-style:none;display:grid;gap:14px}
-.lista li{display:flex;gap:14px;align-items:flex-start;font-size:17px;background:rgba(255,255,255,.55);padding:16px 18px;border-radius:16px}
-.lista li img{width:22px;height:22px;flex:none;margin-top:2px}
+/* ---------- COME ARRIVARE: la mappa vera della strada ---------- */
+.arrivare{position:relative;min-height:100svh;background:var(--crema)}
+.arrivare iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.cartolina-visita{position:relative;z-index:2;width:400px;margin:0 60px 0 auto;top:60px;background:var(--carta);padding:32px 32px 0;display:flex;flex-direction:column;gap:18px}
+.cartolina-visita h2{font-size:clamp(2rem,1.6rem+1.2vw,2.75rem)}
+.cartolina-visita address{font-style:normal;font-size:var(--step-lead);line-height:1.3}
+.cartolina-visita .righe{display:grid;gap:8px;font-size:1rem}
+.cartolina-visita .righe div{display:flex;justify-content:space-between;gap:12px}
+.cartolina-visita .righe span:first-child{color:var(--inchiostro-2)}
+.cartolina-visita .righe a{font-weight:600}
+.cartolina-visita .btn{margin:6px -32px 0;min-height:56px}
+.cartolina-visita .alt{font-size:var(--step-small)}
+.cartolina-visita .alt a{display:inline-block;padding:8px 0}
 
-/* ARRIVARE */
-.arrivare{background:#fff;border-top:1px solid var(--linea)}
-.arrivare .griglia{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;align-items:stretch}
-.indirizzo{background:var(--blu);color:#fff;border-radius:var(--r);padding:40px;display:flex;flex-direction:column;gap:26px}
-.indirizzo .etichetta{color:var(--crema)}
-.indirizzo h3{font-size:36px}
-.indirizzo h3 small{display:block;font:400 18px/1.4 Outfit,sans-serif;color:#cfdcff;margin-top:8px}
-.indirizzo .btn{background:#fff;color:var(--blu);border-color:#fff}
-.indirizzo .btn-vuoto{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
-.indirizzo .btn-vuoto:hover{background:#fff;color:var(--blu)}
-.indirizzo .azioni{display:flex;flex-wrap:wrap;gap:10px}
-.consigli{display:grid;gap:14px;font-size:15.5px;color:#e4ebff}
-.consigli div{display:flex;gap:12px}
-.consigli b{color:#fff}
-.consigli svg{width:22px;height:22px;flex:none;margin-top:1px}
-.mappa{border-radius:var(--r);overflow:hidden;min-height:440px;background:var(--crema);border:1px solid var(--linea)}
-.mappa iframe{width:100%;height:100%;min-height:440px;border:0;display:block}
+/* ---------- PIEDE: il retro della cartolina ---------- */
+footer{padding:var(--sez) var(--m) var(--m)}
+.retro{max-width:1080px;margin-inline:auto}
+.retro .carta{background:var(--carta);display:grid;grid-template-columns:1fr 1fr;padding:clamp(28px,5vw,64px)}
+.retro .saluto{padding-right:clamp(24px,4vw,56px)}
+.retro .saluto h2{font-size:clamp(2rem,1.5rem+1.4vw,3rem);margin-bottom:20px}
+.retro .saluto p{max-width:34ch}
+.retro .social{display:flex;gap:20px;margin-top:28px;font-weight:500}
+.retro .social a{padding:8px 0}
+.retro .indirizzi{position:relative;padding-left:clamp(24px,4vw,56px)}
+.retro .indirizzi::before{content:"";position:absolute;left:0;top:0;bottom:0;border-left:5px dotted var(--blu);opacity:.45}
+.francobollo{float:right;width:96px;padding:6px;background:var(--crema);margin:0 0 20px 20px}
+.francobollo img{aspect-ratio:3/4;object-fit:cover;width:100%}
+.retro ul{list-style:none;display:grid;gap:12px;font-size:1.125rem;padding-top:120px;clear:both}
+.retro ul a{text-decoration:none}
+.retro ul a:hover{text-decoration:underline}
+.colofone{text-align:center;color:var(--carta);font-size:var(--step-small);padding:28px 0 8px}
+.colofone a{font-weight:500}
 
-/* CONTATTI */
-.contatti{text-align:center;padding:120px 0}
-.contatti img.big{width:160px;margin:0 auto 26px}
-.contatti h2{font-size:clamp(36px,5vw,64px);max-width:800px;margin:0 auto 20px}
-.contatti p{color:var(--grigio);font-size:19px;max-width:560px;margin:0 auto 34px}
-.contatti .azioni{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
-
-footer{background:var(--inchiostro);color:#c9ccd3;padding:56px 0 34px;font-size:15px}
-footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
-footer h4{color:#fff;font:600 13px/1 Outfit;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px}
-footer a{text-decoration:none}
-footer a:hover{color:#fff}
-footer ul{list-style:none;display:grid;gap:8px}
-footer .fine{grid-column:1/-1;border-top:1px solid #2c2f37;padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px;color:#8b8f99}
-.social{display:flex;gap:10px;margin-top:18px}
-.social a{width:42px;height:42px;border-radius:50%;border:1px solid #3a3e48;display:grid;place-items:center}
-.social a:hover{background:var(--blu);border-color:var(--blu)}
-.social svg{width:18px;height:18px;fill:#fff}
-
-/* bottone chiama su mobile */
-.chiama-mobile{display:none}
-
-/* comparsa */
-.rivela{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
-.rivela.visto{opacity:1;transform:none}
+/* ---------- movimento: entrate a scaglioni, solo con JS attivo ---------- */
+.js [data-r]{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:calc(var(--i,0) * 80ms)}
+.js [data-r].visto{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){
-  .rivela{opacity:1;transform:none}
-  .nastro div,.timbro{animation:none}
+  .js [data-r]{opacity:1;transform:none;transition:none}
+  .foto-hero img{transition:none}
+  html{scroll-behavior:auto}
 }
 
-@media (max-width:980px){
-  nav{position:fixed;inset:72px 0 auto;background:var(--carta);border-bottom:1px solid var(--linea);padding:12px 16px 24px;transform:translateY(-120%);transition:transform .3s;z-index:-1}
-  nav.aperto{transform:none}
-  nav ul{flex-direction:column;gap:0}
-  nav li a{display:block;padding:14px 4px;border-bottom:1px solid var(--linea);font-size:18px}
-  .menu-btn{display:block}
-  .barra>.btn{display:none}
-  .hero .wrap,.fattoria .wrap,.fiori .wrap,.arrivare .griglia,.didattica .scheda{grid-template-columns:1fr}
-  .hero{padding-top:28px}
-  .hero-foto{max-width:520px;margin:0 auto 20px;width:calc(100% - 30px)}
-  .timbro{width:112px;height:112px;left:-20px;bottom:-26px}
-  .nota-hero{right:-10px}
-  .passi{grid-template-columns:1fr 1fr}
-  .scaffale{grid-template-columns:1fr 1fr}
-  footer .wrap{grid-template-columns:1fr 1fr}
-  footer .wrap>div:first-child{grid-column:1/-1}
+/* ---------- tablet ---------- */
+@media (max-width:1020px){
+  .viaggio .testa,.mese .testa{grid-column:1/-1;position:static}
+  .scontrino{grid-column:2/12}
+  .menu{grid-column:1/-1}
+  .campo h2,.campo .testa p{grid-column:1/-1}
+  .biglietto{grid-template-columns:1fr;clip-path:none}
+  .biglietto .taglio{width:auto;border-left:0;border-top:5px dotted var(--vino);margin:0 22px}
+  .biglietto .matrice{flex-direction:row;text-align:left}
+  .biglietto .matrice .btn{width:auto}
 }
-@media (max-width:640px){
-  body{font-size:16px}
-  section{padding:76px 0}
-  .titolo-sez{margin-bottom:36px}
-  .passi,.scaffale{grid-template-columns:1fr}
-  .passo{min-height:190px}
-  .prodotto.grande{grid-column:auto;flex-direction:column}
-  .prodotto.grande .foto{min-height:240px}
-  .didattica .scheda>div{padding:32px 24px}
-  .indirizzo{padding:30px 24px}
-  .numeri b{font-size:32px}
-  .fiori .coppia .foto:last-child{margin-top:32px}
-  footer .wrap{grid-template-columns:1fr}
-  .chiama-mobile{display:flex;position:fixed;left:16px;right:16px;bottom:16px;z-index:60;justify-content:center;box-shadow:0 12px 30px rgba(10,71,240,.35)}
-  footer{padding-bottom:100px}
+
+/* ---------- telefono: composizione a sé ---------- */
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr;gap:0;padding:12px}
+  .foto-hero{position:relative;top:0;height:34svh;order:-1}
+  .etichetta{min-height:0;margin-top:-24px;position:relative}
+  .fascia{height:40px}
+  .etichetta .logo{width:38%;margin-bottom:16px}
+  .etichetta .dentro{padding:24px 20px 20px}
+  .etichetta .frase{margin-bottom:22px}
+  .etichetta h1{margin-bottom:16px}
+  .etichetta nav{padding-top:20px}
+  .etichetta h1{font-size:clamp(2.25rem,9vw,2.75rem)}
+  .etichetta .btn{width:100%}
+  .scontrino{grid-column:1/-1}
+  .tessere{grid-template-columns:1fr 1fr;gap:16px 8px}
+  .cartellino{padding:10px;min-height:0}
+  .cartellino .r2{display:none}
+  .cartellino .r1{font-size:var(--step-small);flex-wrap:wrap}
+  .biglietto ul{grid-template-columns:1fr}
+  .biglietto .matrice{flex-direction:column;text-align:center}
+  .biglietto .matrice .btn{width:100%}
+  .arrivare{min-height:0;display:flex;flex-direction:column}
+  .arrivare iframe{position:relative;height:70svh}
+  .cartolina-visita{width:auto;margin:-80px 16px 0;top:0;padding:24px 24px 0}
+  .cartolina-visita .btn{margin:6px -24px 0}
+  .retro .carta{grid-template-columns:1fr}
+  .retro .saluto{padding:0 0 32px}
+  .retro .indirizzi{padding:32px 0 0}
+  .retro .indirizzi::before{left:0;right:0;bottom:auto;border-left:0;border-top:5px dotted var(--blu)}
+  .retro ul{padding-top:24px;font-size:1.0625rem}
+  .francobollo{width:72px}
 }
 </style>
 </head>
 <body>
 
-<header id="top">
-  <div class="wrap barra">
-    <a class="marchio" href="#top" aria-label="Il Casale delle Erbe, torna su">
-      <img src="assets/fiore.png" alt="">
-      <span><b>Il Casale delle Erbe</b><small>Bolzano Vicentino</small></span>
-    </a>
-    <nav id="menu" aria-label="Principale">
-      <ul>
-        <li><a href="#fattoria">La fattoria</a></li>
-        <li><a href="#bottega">Bottega</a></li>
-        <li><a href="#fiori">Fiori</a></li>
-        <li><a href="#didattica">Fattoria didattica</a></li>
-        <li><a href="#arrivare">Come arrivare</a></li>
-      </ul>
-    </nav>
-    <a class="btn btn-pieno" href="tel:+390444350329">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
-      0444 350329
-    </a>
-    <button class="menu-btn" aria-label="Apri il menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
-  </div>
-</header>
-
 <main>
-<!-- HERO -->
-<section class="hero">
-  <div class="wrap">
-    <div class="rivela">
-      <span class="etichetta"><img src="assets/fiore.png" alt="" width="18" height="18"> Fattoria biologica · Erboristeria</span>
-      <h1>Le erbe le coltiviamo noi. <em>Il resto lo fa la stagione.</em></h1>
-      <p class="lead">Tisane, mieli e verdura di campo da quattro ettari biologici a Bolzano Vicentino. Raccogliamo, essicchiamo e miscelamo in fattoria, poi lo trovi in bottega.</p>
-      <div class="azioni">
-        <a class="btn btn-pieno" href="#arrivare">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-6.2-8-12a8 8 0 0 1 16 0c0 5.8-8 12-8 12z"/><circle cx="12" cy="10" r="3"/></svg>
-          Vieni in Via Cafarette
-        </a>
-        <a class="btn btn-vuoto" href="#bottega">Cosa trovi in bottega</a>
+<!-- PRIMA SCHERMATA -->
+<section class="hero" aria-labelledby="titolo">
+  <div class="etichetta">
+    <div class="fascia" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="dentro">
+      <img class="logo" src="assets/logo-circolare.png" width="1283" height="1226" alt="Il Casale delle Erbe, Vicenza">
+      <h1 id="titolo">Tisane, miele e orto biologico</h1>
+      <p class="frase">Fattoria ed erboristeria in Via Cafarette 6, a Bolzano Vicentino. Le erbe le coltiviamo, le raccogliamo e le essicchiamo noi.</p>
+      <a class="btn" href="#arrivare">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s-7-6.1-7-12a7 7 0 0 1 14 0c0 5.9-7 12-7 12z"/><circle cx="12" cy="10" r="2.6"/></svg>
+        Come arrivare
+      </a>
+      <nav aria-label="Sezioni">
+        <a href="#mese">Cosa c'è questo mese</a>
+        <a href="#viaggio">Le nostre tisane</a>
+        <a href="#visite">Visite in fattoria</a>
+      </nav>
+    </div>
+  </div>
+  <div class="foto-hero" id="foto-hero">
+    <img class="on" src="assets/foto/girasoli.jpg" width="1100" height="1311" alt="Girasoli in fiore nel campo del Casale delle Erbe">
+    <img src="assets/foto/dalie-campo.jpg" width="1076" height="1400" alt="Un mazzo di dalie arancioni appena raccolte davanti ai campi">
+    <img src="assets/foto/cesto.jpg" width="1100" height="1382" alt="Cesto di verdura biologica: insalate, patate, patate dolci e finocchi">
+  </div>
+</section>
+
+<!-- LA LETTERA -->
+<section class="lettera" aria-labelledby="t-lettera">
+  <div class="foglio" data-r>
+    <div class="carta">
+      <h2 id="t-lettera">Tutto parte dalle api</h2>
+      <p>Il Casale delle Erbe è nato da qualche arnia di famiglia. Le api sono ancora qui, e intorno a loro è cresciuto tutto il resto.</p>
+      <p>Oggi coltiviamo <mark>quattro ettari certificati biologici</mark> a Bolzano Vicentino: soprattutto piante officinali, poi l'orto e i fiori.</p>
+      <p>Le erbe le raccogliamo a mano, le facciamo essiccare e le misceliamo qui in fattoria. Ogni tisana che trovi in bottega è passata dalle nostre mani, dal campo alla bustina.</p>
+      <p>Il resto lo decide la stagione: d'estate zucchine e girasoli, d'autunno dalie, patate e insalate. Se passi in Via Cafarette, fermati a fare due chiacchiere.</p>
+      <div class="firma">
+        <img src="assets/fiore.png" width="56" height="56" alt="">
+        <div><b>Emanuela e Alessandro</b><span>con tutta la famiglia del Casale</span></div>
       </div>
     </div>
-    <div class="hero-foto rivela">
-      <div class="foto"><img src="assets/foto/girasoli.jpg" alt="Girasoli in fiore nei campi del Casale delle Erbe" onerror="this.remove()"></div>
-      <div class="timbro"><img src="assets/logo-circolare.png" alt="Logo Il Casale delle Erbe Vicenza"></div>
-      <div class="nota-hero"><i></i> Certificati biologici</div>
-    </div>
-  </div>
-</section>
-
-<div class="nastro" aria-hidden="true">
-  <div>
-    <span>Erbe officinali <img src="assets/fiore.png" alt=""> Tisane <img src="assets/fiore.png" alt=""> Mieli <img src="assets/fiore.png" alt=""> Verdura a km 0 <img src="assets/fiore.png" alt=""> Fiori di stagione <img src="assets/fiore.png" alt=""> Fattoria didattica <img src="assets/fiore.png" alt=""></span>
-    <span>Erbe officinali <img src="assets/fiore.png" alt=""> Tisane <img src="assets/fiore.png" alt=""> Mieli <img src="assets/fiore.png" alt=""> Verdura a km 0 <img src="assets/fiore.png" alt=""> Fiori di stagione <img src="assets/fiore.png" alt=""> Fattoria didattica <img src="assets/fiore.png" alt=""></span>
-  </div>
-</div>
-
-<!-- FATTORIA -->
-<section class="fattoria" id="fattoria">
-  <div class="wrap">
-    <div class="collage rivela">
-      <div class="foto"><img src="assets/foto/cassetta-1.jpg" alt="Cassetta di verdura di stagione: zucchine, pomodori, cavolo, carote e fagiolini" onerror="this.remove()"></div>
-      <div class="foto"><img src="assets/foto/cassetta-2.jpg" alt="Il raccolto del giorno in cassetta" onerror="this.remove()"></div>
-    </div>
-    <div class="testo rivela">
-      <span class="etichetta">La fattoria</span>
-      <h2 class="titolo-sez" style="margin-bottom:22px;font-size:clamp(34px,4.4vw,56px);margin-top:14px">Tutto è cominciato <em>dalle api</em>.</h2>
-      <p>Il Casale delle Erbe nasce come piccola apicoltura di famiglia. Con gli anni le arnie sono rimaste e intorno sono cresciute le piante officinali, l'orto e i fiori.</p>
-      <p>Oggi Emanuela, Alessandro e la loro famiglia seguono quattro ettari certificati biologici a Bolzano Vicentino. Le erbe le coltiviamo, le raccogliamo e le essicchiamo qui. Le miscele per le tisane nascono in fattoria, una per una.</p>
-      <div class="numeri">
-        <div><b>4 ha</b><span>di terra certificata bio</span></div>
-        <div><b>0 km</b><span>dal campo alla bottega</span></div>
-        <div><b>1</b><span>famiglia, dalle api alla tazza</span></div>
+    <div class="strappo">
+      <div class="perfora" aria-hidden="true"></div>
+      <div class="riga">
+        <span>Per ordini e domande</span>
+        <a href="mailto:info@ilcasaledelleerbe.it">info@ilcasaledelleerbe.it</a>
       </div>
     </div>
+    <div class="smerlo" aria-hidden="true"></div>
   </div>
 </section>
 
-<!-- FILIERA -->
-<section class="filiera">
-  <div class="wrap">
-    <div class="titolo-sez rivela">
-      <span class="etichetta">Dalla pianta alla tazza</span>
-      <h2>Una tisana passa <em>quattro volte</em> dalle nostre mani.</h2>
-      <p>Niente intermediari. Sappiamo da quale fila del campo arriva ogni foglia che metti in infusione.</p>
+<!-- LO SCONTRINO -->
+<section class="viaggio" id="viaggio" aria-labelledby="t-viaggio">
+  <div class="griglia">
+    <div class="testa" data-r>
+      <h2 id="t-viaggio">Il viaggio di una tisana</h2>
+      <p>Niente intermediari: sappiamo da quale fila del campo arriva ogni foglia che metti in infusione.</p>
     </div>
-    <div class="passi">
-      <div class="passo rivela"><h3>Coltiviamo</h3><p>Piante officinali in campo aperto, con il metodo biologico e il ritmo delle stagioni.</p></div>
-      <div class="passo rivela"><h3>Raccogliamo</h3><p>A mano, nel momento giusto: quando la pianta ha più profumo e più principi attivi.</p></div>
-      <div class="passo rivela"><h3>Essicchiamo</h3><p>Lentamente e al riparo dalla luce, per conservare colore e aroma.</p></div>
-      <div class="passo rivela"><h3>Miscelamo</h3><p>Le nostre tisane nascono in fattoria: dosi pensate per il gusto e per il benessere.</p></div>
+    <div class="scontrino" data-r style="--i:1">
+      <div class="carta">
+        <h3>In primavera</h3>
+        <div class="voce"><span>Semina in campo aperto</span><span class="punti"></span><em>marzo–aprile</em></div>
+        <div class="voce"><span>Cura dell'orto, solo metodo bio</span><span class="punti"></span><em>ogni giorno</em></div>
+        <h3>D'estate</h3>
+        <div class="voce"><span>Raccolta a mano, nel momento giusto</span><span class="punti"></span><em>giugno–settembre</em></div>
+        <div class="voce"><span>Essiccazione lenta, al riparo dalla luce</span><span class="punti"></span><em>qualche giorno</em></div>
+        <h3>Tutto l'anno</h3>
+        <div class="voce"><span>Miscela delle erbe in fattoria</span><span class="punti"></span><em>a mano</em></div>
+        <div class="voce"><span>Sullo scaffale della bottega</span><span class="punti"></span><em>Via Cafarette 6</em></div>
+        <div class="totale"><span>Una tisana nella tua tazza</span><span>dal seme, un anno</span></div>
+      </div>
+      <div class="zigzag" aria-hidden="true"></div>
     </div>
   </div>
 </section>
 
-<!-- BOTTEGA -->
-<section class="bottega" id="bottega">
-  <div class="wrap">
-    <div class="titolo-sez rivela">
-      <span class="etichetta">La bottega</span>
-      <h2>Quello che trovi <em>sugli scaffali</em>.</h2>
-      <p>Erboristeria e spaccio aziendale nello stesso posto. Quello che non viene dal nostro campo lo scegliamo con la stessa attenzione.</p>
+<!-- QUESTO MESE -->
+<section class="mese" id="mese" aria-labelledby="t-mese">
+  <div class="griglia">
+    <div class="testa" data-r>
+      <h2 id="t-mese">Cosa c'è questo mese</h2>
+      <p>Scegli un mese e guarda cosa esce dall'orto, cosa fiorisce e quali erbe raccogliamo. In bottega, intanto, tisane e mieli ci sono sempre.</p>
+      <div class="mesi" role="group" aria-label="Scegli il mese">
+        <button type="button" data-m="0" aria-pressed="false">Gen</button>
+        <button type="button" data-m="1" aria-pressed="false">Feb</button>
+        <button type="button" data-m="2" aria-pressed="false">Mar</button>
+        <button type="button" data-m="3" aria-pressed="false">Apr</button>
+        <button type="button" data-m="4" aria-pressed="false">Mag</button>
+        <button type="button" data-m="5" aria-pressed="false">Giu</button>
+        <button type="button" data-m="6" aria-pressed="false">Lug</button>
+        <button type="button" data-m="7" aria-pressed="false">Ago</button>
+        <button type="button" data-m="8" aria-pressed="false">Set</button>
+        <button type="button" data-m="9" aria-pressed="true">Ott</button>
+        <button type="button" data-m="10" aria-pressed="false">Nov</button>
+        <button type="button" data-m="11" aria-pressed="false">Dic</button>
+      </div>
     </div>
-    <div class="scaffale">
-      <article class="prodotto rivela" style="--c:var(--verde)">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#16181d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h13v4a6 6 0 0 1-6 6h-1a6 6 0 0 1-6-6z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H16"/><path d="M8 2c0 1.5 1 1.5 1 3M12 2c0 1.5 1 1.5 1 3"/></svg></div>
-        <h3>Tisane e infusi</h3>
-        <p>Miscele nostre di erbe officinali essiccate in fattoria: per la sera, la digestione, l'inverno.</p>
-        <div class="chip"><span>Erbe singole</span><span>Miscele</span></div>
-      </article>
-      <article class="prodotto rivela" style="--c:var(--giallo)">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#16181d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10l1 3v8a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3v-8z"/><path d="M8 3h8v4H8z"/><path d="M9 13c1.5 1 4.5 1 6 0"/></svg></div>
-        <h3>Mieli</h3>
-        <p>Dalle nostre arnie: la storia del Casale parte da qui. Mieli biologici e mieli aromatizzati alle erbe.</p>
-        <div class="chip"><span>Biologico</span><span>Aromatizzato</span></div>
-      </article>
-      <article class="prodotto rivela" style="--c:var(--rosa)">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#16181d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4v4l3 4v10a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V10l3-4z"/><path d="M7 14h10"/></svg></div>
-        <h3>Preparati erboristici</h3>
-        <p>L'angolo erboristeria: preparati a base di piante, con un consiglio a voce quando serve.</p>
-      </article>
-      <article class="prodotto grande rivela">
-        <div class="foto"><img src="assets/foto/cesto.jpg" alt="Cesto di verdura biologica: insalata, patate, patate dolci, finocchi" onerror="this.remove()"></div>
-        <div class="dentro">
-          <span class="etichetta">Dall'orto</span>
-          <h3>Frutta e verdura di stagione, a km 0</h3>
-          <p>D'estate zucchine, pomodori cuore di bue e fagiolini; d'autunno insalate, patate e finocchi. Quello che c'è nel campo questa settimana. Chiamaci prima di passare e ti diciamo cosa è appena stato raccolto.</p>
-          <div class="chip"><span>Biologico</span><span>Raccolto del giorno</span><span>Cassette</span></div>
+    <div class="menu" data-r style="--i:1">
+      <div class="smerlo su" aria-hidden="true"></div>
+      <div class="carta">
+        <h3 class="titolo" id="nome-mese" aria-live="polite">Ottobre al Casale</h3>
+        <p class="nota">Indicativo: dipende dal tempo e dal raccolto.</p>
+        <div id="lista-mese">
+          <div class="gruppo"><h4>Dall'orto</h4><ul><li><span>Patate e patate dolci</span><span>bio</span></li><li><span>Insalate e radicchio</span><span>bio</span></li><li><span>Finocchi</span><span>bio</span></li><li><span>Cavoli e verze</span><span>bio</span></li></ul></div>
+          <div class="gruppo"><h4>Fiori</h4><ul><li><span>Dalie</span><span>di stagione</span></li></ul></div>
+          <div class="gruppo"><h4>Erbe in raccolta</h4><ul><li><span>Ultime foglie di melissa e menta</span><span>bio</span></li></ul></div>
         </div>
-      </article>
-      <article class="prodotto rivela" style="--c:var(--arancio)">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#16181d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="7" width="12" height="14" rx="2"/><path d="M5 4h14v3H5z"/><path d="M9 12h6M9 16h4"/></svg></div>
-        <h3>La dispensa</h3>
-        <p>Confetture, passata di pomodoro, agrodolci, sottoli e sottaceti, farine. Il raccolto, messo in barattolo.</p>
-      </article>
+        <div class="gruppo">
+          <h4>Sempre in bottega</h4>
+          <ul>
+            <li><span>Tisane e infusi<small>Miscele nostre di erbe officinali</small></span><span>dal campo</span></li>
+            <li><span>Mieli<small>Biologici e aromatizzati alle erbe</small></span><span>dalle arnie</span></li>
+            <li><span>Preparati erboristici<small>Con un consiglio a voce</small></span><span>erboristeria</span></li>
+            <li><span>Confetture e passata<small>Il raccolto messo in barattolo</small></span><span>dispensa</span></li>
+            <li><span>Agrodolci, sottoli, sottaceti</span><span>dispensa</span></li>
+            <li><span>Farine</span><span>dispensa</span></li>
+          </ul>
+        </div>
+        <p class="orari">Orari della bottega: chiamaci allo<br><a href="tel:+390444350329">0444 350329</a></p>
+      </div>
+      <div class="smerlo" aria-hidden="true"></div>
     </div>
   </div>
 </section>
 
-<!-- FIORI -->
-<section class="fiori" id="fiori">
-  <div class="wrap">
-    <div class="rivela">
-      <span class="etichetta">Fiori di stagione</span>
-      <h2>Girasoli d'estate, <em>dalie</em> fino all'autunno.</h2>
-      <p>Tra le file delle officinali crescono anche i fiori. Li raccogliamo freschi per mazzi semplici, colorati, di campo. Chiedi in bottega cosa è in fiore.</p>
+<!-- DAL CAMPO -->
+<section class="campo" aria-labelledby="t-campo">
+  <div class="dentro">
+    <div class="testa" data-r>
+      <h2 id="t-campo">Dal campo, quest'anno</h2>
+      <p>Foto scattate da noi tra le file dell'orto e dei fiori. Quello che vedi qui lo trovi in bottega, finché dura la stagione.</p>
     </div>
-    <div class="coppia rivela">
-      <div class="foto"><img src="assets/foto/dalie-campo.jpg" alt="Dalie arancioni tenute in mano davanti ai campi" onerror="this.remove()"></div>
-      <div class="foto"><img src="assets/foto/dalie-bouquet.jpg" alt="Bouquet di dalie bianche, bordeaux e salmone" onerror="this.remove()"></div>
+    <div class="tessere">
+      <figure class="tessera" data-r>
+        <div class="img"><img src="assets/foto/girasoli.jpg" width="1100" height="1311" alt="Girasoli nel campo" loading="lazy"></div>
+        <figcaption class="cartellino"><span class="r1"><span>Girasoli</span><span>estate</span></span><span class="r2"><span>Campo aperto</span><span>luglio–agosto</span></span></figcaption>
+      </figure>
+      <figure class="tessera" data-r style="--i:1">
+        <div class="img"><img src="assets/foto/cassetta-1.jpg" width="1100" height="1376" alt="Cassetta rossa con zucchine, pomodori cuore di bue, cavolo, carote e fagiolini" loading="lazy"></div>
+        <figcaption class="cartellino"><span class="r1"><span>Cassetta dell'orto</span><span>estate</span></span><span class="r2"><span>Zucchine, cuore di bue, fagiolini</span><span>bio</span></span></figcaption>
+      </figure>
+      <figure class="tessera" data-r style="--i:2">
+        <div class="img"><img src="assets/foto/dalie-bouquet.jpg" width="1038" height="1400" alt="Mazzo di dalie bianche, bordeaux e salmone" loading="lazy"></div>
+        <figcaption class="cartellino"><span class="r1"><span>Dalie miste</span><span>autunno</span></span><span class="r2"><span>Bianche, bordeaux, salmone</span><span>fino alle gelate</span></span></figcaption>
+      </figure>
+      <figure class="tessera" data-r>
+        <div class="img"><img src="assets/foto/cesto.jpg" width="1100" height="1382" alt="Cesto di insalate, patate, patate dolci e finocchi" loading="lazy"></div>
+        <figcaption class="cartellino"><span class="r1"><span>Cesto d'autunno</span><span>ottobre</span></span><span class="r2"><span>Insalate, patate, finocchi</span><span>bio</span></span></figcaption>
+      </figure>
+      <figure class="tessera" data-r style="--i:1">
+        <div class="img"><img src="assets/foto/dalie-campo.jpg" width="1076" height="1400" alt="Mazzo di dalie arancioni tenuto in mano davanti al campo" loading="lazy"></div>
+        <figcaption class="cartellino"><span class="r1"><span>Dalie arancioni</span><span>settembre</span></span><span class="r2"><span>Raccolte al mattino</span><span>campo</span></span></figcaption>
+      </figure>
+      <figure class="tessera" data-r style="--i:2">
+        <div class="img"><img src="assets/foto/cassetta-2.jpg" width="1100" height="1367" alt="Cassetta con pomodori, cavolo, zucchine, carote e fagiolini" loading="lazy"></div>
+        <figcaption class="cartellino"><span class="r1"><span>Raccolto del giorno</span><span>agosto</span></span><span class="r2"><span>Pomodori, cavolo, carote</span><span>bio</span></span></figcaption>
+      </figure>
     </div>
   </div>
 </section>
 
-<!-- DIDATTICA -->
-<section class="didattica" id="didattica">
-  <div class="wrap">
-    <div class="scheda rivela">
-      <div>
-        <span class="etichetta">Fattoria didattica e sociale</span>
-        <h2>Il campo è <em>un'aula</em> all'aperto.</h2>
-        <p style="color:var(--grigio);font-size:18px">Accogliamo scuole, gruppi e famiglie per scoprire da vicino le api, le erbe officinali e il lavoro della terra. Siamo anche fattoria sociale: la campagna come luogo di inclusione.</p>
-        <a class="btn btn-pieno" href="mailto:info@ilcasaledelleerbe.it?subject=Visita%20in%20fattoria" style="margin-top:28px">Organizza una visita</a>
-      </div>
-      <div class="lato">
-        <ul class="lista">
-          <li><img src="assets/fiore.png" alt=""> Le api e il miele: come lavora un'arnia</li>
-          <li><img src="assets/fiore.png" alt=""> Riconoscere le erbe officinali con naso e mani</li>
-          <li><img src="assets/fiore.png" alt=""> Dall'essiccazione alla tisana</li>
-          <li><img src="assets/fiore.png" alt=""> L'orto biologico, stagione per stagione</li>
-        </ul>
-      </div>
+<!-- VISITE -->
+<section class="visite" id="visite" aria-labelledby="t-visite">
+  <div class="biglietto" data-r>
+    <div class="corpo">
+      <h2 id="t-visite">Una mattina in fattoria</h2>
+      <p>Siamo fattoria didattica e sociale. Accogliamo scuole, gruppi e famiglie per vedere da vicino le api, le erbe e il lavoro della terra.</p>
+      <ul>
+        <li>Le api e il miele</li>
+        <li>Riconoscere le erbe officinali</li>
+        <li>Dall'essiccazione alla tisana</li>
+        <li>L'orto biologico, mese per mese</li>
+      </ul>
+    </div>
+    <div class="taglio" aria-hidden="true"></div>
+    <div class="matrice">
+      <img src="assets/logo-circolare.png" width="1283" height="1226" alt="" loading="lazy">
+      <p>Scuole, gruppi e famiglie.<br>Su prenotazione.</p>
+      <a class="btn" href="mailto:info@ilcasaledelleerbe.it?subject=Visita%20in%20fattoria&body=Buongiorno%2C%20vorremmo%20organizzare%20una%20visita.%0A%0AGruppo%20(scuola%2C%20famiglia%2C%20altro)%3A%20%0ANumero%20di%20persone%3A%20%0AGiorno%20preferito%3A%20">Prenota una visita</a>
     </div>
   </div>
 </section>
 
 <!-- COME ARRIVARE -->
-<section class="arrivare" id="arrivare">
-  <div class="wrap">
-    <div class="titolo-sez rivela">
-      <span class="etichetta">Come arrivare</span>
-      <h2>Ci trovi in <em>Via Cafarette</em>.</h2>
-      <p>Siamo in campagna a Bolzano Vicentino, a nord-est di Vicenza. Imposta il navigatore qui sotto: ti porta fino al cancello.</p>
+<section class="arrivare" id="arrivare" aria-labelledby="t-arrivare">
+  <iframe title="Mappa di Via Cafarette 6, Bolzano Vicentino" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Via%20Cafarette%206%2C%2036050%20Bolzano%20Vicentino%20VI&z=15&output=embed"></iframe>
+  <div class="cartolina-visita" data-r>
+    <h2 id="t-arrivare">Via Cafarette 6</h2>
+    <address>36050 Bolzano Vicentino (VI)<br>a nord-est di Vicenza</address>
+    <div class="righe">
+      <div><span>Bottega</span><span>orari al telefono</span></div>
+      <div><span>Telefono</span><a href="tel:+390444350329">0444 350329</a></div>
+      <div><span>Email</span><a href="mailto:info@ilcasaledelleerbe.it">scrivici</a></div>
     </div>
-    <div class="griglia">
-      <div class="indirizzo rivela">
-        <span class="etichetta">Indirizzo</span>
-        <h3>Via Cafarette, 6<small>36050 Bolzano Vicentino (VI)</small></h3>
-        <div class="azioni">
-          <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=Via+Cafarette+6,+36050+Bolzano+Vicentino+VI" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 19-9-9 19-2-8z"/></svg>
-            Google Maps
-          </a>
-          <a class="btn btn-vuoto" href="https://waze.com/ul?q=Via%20Cafarette%206%20Bolzano%20Vicentino&navigate=yes" target="_blank" rel="noopener">Waze</a>
-        </div>
-        <div class="consigli">
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span><b>Prima di partire, chiamaci.</b> Ti confermiamo gli orari della bottega e cosa c'è di fresco.</span></div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14l-1.5-6h-11z"/><circle cx="8" cy="19" r="1.5"/><circle cx="16" cy="19" r="1.5"/></svg><span><b>Parcheggio</b> davanti all'azienda.</span></div>
-          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span><a href="tel:+390444350329"><b>0444 350329</b></a> · <a href="mailto:info@ilcasaledelleerbe.it">info@ilcasaledelleerbe.it</a></span></div>
-        </div>
-      </div>
-      <div class="mappa rivela">
-        <iframe title="Mappa: Il Casale delle Erbe, Via Cafarette 6, Bolzano Vicentino" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Via%20Cafarette%206%2C%2036050%20Bolzano%20Vicentino%20VI&z=14&output=embed"></iframe>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTATTI -->
-<section class="contatti">
-  <div class="wrap rivela">
-    <img class="big" src="assets/logo-circolare.png" alt="Il Casale delle Erbe Vicenza">
-    <h2>Passa a trovarci, <em>ti offriamo una tisana</em>.</h2>
-    <p>Per ordini, visite in fattoria o solo per sapere cosa è appena stato raccolto, scrivici o chiamaci.</p>
-    <div class="azioni">
-      <a class="btn btn-pieno" href="tel:+390444350329">Chiama 0444 350329</a>
-      <a class="btn btn-vuoto" href="mailto:info@ilcasaledelleerbe.it">Scrivi una mail</a>
-    </div>
+    <div class="alt"><a href="https://waze.com/ul?q=Via%20Cafarette%206%20Bolzano%20Vicentino&navigate=yes" target="_blank" rel="noopener">Apri in Waze</a></div>
+    <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=Via+Cafarette+6,+36050+Bolzano+Vicentino+VI" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 18-8-8 18-2-8z"/></svg>
+      Indicazioni con Google Maps
+    </a>
   </div>
 </section>
 </main>
 
-<footer>
-  <div class="wrap">
-    <div>
-      <a class="marchio" href="#top" style="color:#fff"><img src="assets/fiore.png" alt=""><span><b>Il Casale delle Erbe</b><small style="color:#8b8f99">Azienda agricola biologica</small></span></a>
-      <div class="social">
-        <a href="https://www.facebook.com/ilcasaledelleerbe" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H8v4h2v8h4v-8h3l1-4h-4V8z"/></svg></a>
-        <a href="https://www.instagram.com/il_casale_delle_erbe" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM12 2c-2.7 0-3.1 0-4.1.1C4.5 2.2 2.2 4.5 2.1 7.9 2 8.9 2 9.3 2 12s0 3.1.1 4.1c.1 3.4 2.4 5.7 5.8 5.8 1 .1 1.4.1 4.1.1s3.1 0 4.1-.1c3.4-.1 5.7-2.4 5.8-5.8.1-1 .1-1.4.1-4.1s0-3.1-.1-4.1c-.1-3.4-2.4-5.7-5.8-5.8C15.1 2 14.7 2 12 2zm0 1.8c2.7 0 3 0 4 .1 2.5.1 3.9 1.5 4 4 .1 1 .1 1.3.1 4s0 3-.1 4c-.1 2.5-1.5 3.9-4 4-1 .1-1.3.1-4 .1s-3 0-4-.1c-2.5-.1-3.9-1.5-4-4-.1-1-.1-1.3-.1-4s0-3 .1-4c.1-2.5 1.5-3.9 4-4 1-.1 1.3-.1 4-.1z"/></svg></a>
+<footer aria-labelledby="t-saluto">
+  <div class="retro" data-r>
+    <div class="smerlo su" aria-hidden="true"></div>
+    <div class="carta">
+      <div class="saluto">
+        <h2 id="t-saluto">A presto, in campagna</h2>
+        <p>Passa a prendere una tisana, un vasetto di miele o la verdura della settimana. Prima di partire chiamaci: ti diciamo cosa è appena stato raccolto.</p>
+        <div class="social">
+          <a href="https://www.instagram.com/il_casale_delle_erbe" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.facebook.com/ilcasaledelleerbe" target="_blank" rel="noopener">Facebook</a>
+        </div>
+      </div>
+      <div class="indirizzi">
+        <div class="francobollo"><img src="assets/foto/dalie-bouquet.jpg" width="1038" height="1400" alt="Francobollo con un mazzo di dalie" loading="lazy"></div>
+        <ul>
+          <li><a href="mailto:info@ilcasaledelleerbe.it">info@ilcasaledelleerbe.it</a></li>
+          <li><a href="tel:+390444350329">0444 350329</a></li>
+          <li><a href="https://www.google.com/maps/dir/?api=1&destination=Via+Cafarette+6,+36050+Bolzano+Vicentino+VI" target="_blank" rel="noopener">Via Cafarette 6, Bolzano Vicentino</a></li>
+          <li>Il Casale delle Erbe di Fattori Emanuela</li>
+        </ul>
       </div>
     </div>
-    <div>
-      <h4>Dove siamo</h4>
-      <ul><li>Via Cafarette, 6</li><li>36050 Bolzano Vicentino (VI)</li><li><a href="https://www.google.com/maps/dir/?api=1&destination=Via+Cafarette+6,+36050+Bolzano+Vicentino+VI" target="_blank" rel="noopener">Indicazioni stradali →</a></li></ul>
-    </div>
-    <div>
-      <h4>Contatti</h4>
-      <ul><li><a href="tel:+390444350329">0444 350329</a></li><li><a href="mailto:info@ilcasaledelleerbe.it">info@ilcasaledelleerbe.it</a></li></ul>
-    </div>
-    <div class="fine"><span>© 2026 Il Casale delle Erbe di Fattori Emanuela</span><span>Bozza a cura di Rivinity Agency</span></div>
   </div>
+  <p class="colofone">© 2026 Il Casale delle Erbe · Bozza di <a href="https://rivinityagency.com">Rivinity Agency</a></p>
 </footer>
 
-<a class="btn btn-pieno chiama-mobile" href="tel:+390444350329">Chiama la fattoria</a>
-
 <script>
-const head=document.querySelector('header'),menu=document.getElementById('menu'),bt=document.querySelector('.menu-btn');
-addEventListener('scroll',()=>head.classList.toggle('scorre',scrollY>8),{passive:true});
-bt.addEventListener('click',()=>{const a=menu.classList.toggle('aperto');bt.setAttribute('aria-expanded',a)});
-menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('aperto');bt.setAttribute('aria-expanded',false)}));
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visto');io.unobserve(e.target)}}),{threshold:.12});
-document.querySelectorAll('.rivela').forEach(el=>io.observe(el));
+/* foto della prima schermata che cambiano piano, come la luce */
+(function(){
+  const imgs=[...document.querySelectorAll('#foto-hero img')];
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches||imgs.length<2)return;
+  let i=0,t;
+  const giro=()=>{imgs[i].classList.remove('on');i=(i+1)%imgs.length;imgs[i].classList.add('on')};
+  const via=()=>{t=setInterval(giro,6000)};
+  document.addEventListener('visibilitychange',()=>{clearInterval(t);if(!document.hidden)via()});
+  via();
+})();
+
+/* entrate a scaglioni, una volta sola */
+(function(){
+  const els=document.querySelectorAll('[data-r]');
+  if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('visto'));return}
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visto');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
+  els.forEach(e=>io.observe(e));
+})();
+
+/* il foglio "questo mese": dati indicativi, da confermare con la fattoria */
+(function(){
+  const nomi=['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+  const D=[
+    {o:['Radicchio','Cavoli e verze','Porri'],f:[],e:[]},
+    {o:['Radicchio','Cavoli e verze','Porri'],f:[],e:[]},
+    {o:['Spinaci','Radicchio','Erbette'],f:[],e:[]},
+    {o:['Spinaci','Insalate','Erbette'],f:[],e:['Prime foglie di melissa e menta']},
+    {o:['Insalate','Piselli','Erbette'],f:[],e:['Melissa e menta','Camomilla in fiore']},
+    {o:['Zucchine','Fagiolini','Insalate','Prime patate'],f:[],e:['Camomilla','Calendula','Lavanda']},
+    {o:['Zucchine','Pomodori cuore di bue','Fagiolini','Carote'],f:['Girasoli'],e:['Lavanda','Malva','Salvia e timo']},
+    {o:['Pomodori cuore di bue','Zucchine','Cavolo cappuccio','Carote'],f:['Girasoli','Prime dalie'],e:['Malva','Salvia e timo']},
+    {o:['Pomodori','Zucchine tonde','Patate','Carote'],f:['Dalie'],e:['Ultima calendula']},
+    {o:['Patate e patate dolci','Insalate e radicchio','Finocchi','Cavoli e verze'],f:['Dalie'],e:['Ultime foglie di melissa e menta']},
+    {o:['Radicchio','Finocchi','Cavoli e verze','Zucche'],f:[],e:[]},
+    {o:['Radicchio','Cavoli e verze','Porri'],f:[],e:[]}
+  ];
+  const vuoti={f:'Nessun fiore in campo: tornano con l’estate.',e:'Il campo riposa. Le erbe essiccate sono tutte in bottega.'};
+  const lista=document.getElementById('lista-mese'),titolo=document.getElementById('nome-mese'),bottoni=[...document.querySelectorAll('.mesi button')];
+  const gruppo=(nome,voci,etichetta,vuoto)=>'<div class="gruppo"><h4>'+nome+'</h4>'+(voci.length?'<ul>'+voci.map(v=>'<li><span>'+v+'</span><span>'+etichetta+'</span></li>').join('')+'</ul>':'<p class="vuoto">'+vuoto+'</p>')+'</div>';
+  function mostra(m,anima){
+    bottoni.forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.m===m)));
+    const d=D[m];
+    const scrivi=()=>{
+      titolo.textContent=nomi[m]+' al Casale';
+      lista.innerHTML=gruppo("Dall'orto",d.o,'bio','')+gruppo('Fiori',d.f,'di stagione',vuoti.f)+gruppo('Erbe in raccolta',d.e,'bio',vuoti.e);
+      lista.classList.remove('cambia');
+    };
+    if(anima&&!matchMedia('(prefers-reduced-motion: reduce)').matches){lista.classList.add('cambia');setTimeout(scrivi,220)}else scrivi();
+  }
+  bottoni.forEach(b=>b.addEventListener('click',()=>mostra(+b.dataset.m,true)));
+  mostra(new Date().getMonth(),false);
+})();
 </script>
 </body>
 </html>
