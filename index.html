@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Il Casale delle Erbe · Erbe officinali, tisane e miele bio · Bolzano Vicentino</title>
+<meta name="description" content="Fattoria biologica e bottega a Bolzano Vicentino (VI): erbe officinali coltivate ed essiccate da noi, tisane, mieli, verdura di stagione a km 0 e fattoria didattica. Via Cafarette 6.">
+<link rel="icon" href="assets/fiore.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "name": "Il Casale delle Erbe",
+  "description": "Azienda agricola biologica ed erboristeria: erbe officinali, tisane, mieli, verdura di stagione a km 0, fattoria didattica e sociale.",
+  "telephone": "+39 0444 350329",
+  "email": "info@ilcasaledelleerbe.it",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Via Cafarette 6",
+    "addressLocality": "Bolzano Vicentino",
+    "postalCode": "36050",
+    "addressRegion": "VI",
+    "addressCountry": "IT"
+  },
+  "sameAs": ["https://www.facebook.com/ilcasaledelleerbe", "https://www.instagram.com/il_casale_delle_erbe"]
+}
+</script>
+<style>
+:root{
+  --blu:#0a47f0;        /* anello del logo */
+  --blu-scuro:#06258a;
+  --celeste:#8db8e8;
+  --crema:#fbe3a9;
+  --rosa:#f9aedf;
+  --vino:#a61c3c;
+  --giallo:#fde14f;
+  --arancio:#faa445;
+  --verde:#69d088;
+  --corallo:#ff5a6e;
+  --carta:#fffaf0;
+  --inchiostro:#16181d;
+  --grigio:#5a5f6b;
+  --linea:#e9e2d0;
+  --r:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--carta);color:var(--inchiostro);font:400 17px/1.6 Outfit,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;line-height:1.08;letter-spacing:-.01em}
+h1 em,h2 em{font-style:italic;font-weight:400}
+.wrap{width:min(1180px,100% - 32px);margin-inline:auto}
+.etichetta{display:inline-flex;align-items:center;gap:8px;font:600 13px/1 Outfit,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--blu)}
+.etichetta svg{width:18px;height:18px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 24px;border-radius:999px;font-weight:600;text-decoration:none;transition:transform .2s,background .2s,color .2s;border:2px solid var(--blu)}
+.btn:hover{transform:translateY(-2px)}
+.btn-pieno{background:var(--blu);color:#fff}
+.btn-pieno:hover{background:var(--blu-scuro);border-color:var(--blu-scuro)}
+.btn-vuoto{color:var(--blu);background:transparent}
+.btn-vuoto:hover{background:var(--blu);color:#fff}
+.btn svg{width:18px;height:18px}
+
+/* foto: se il file non c'è ancora resta lo sfondo a petali */
+.foto{position:relative;border-radius:var(--r);overflow:hidden;background:var(--sf, var(--crema))}
+.foto img{width:100%;height:100%;object-fit:cover}
+.foto::before{content:"";position:absolute;inset:0;background:url(assets/fiore.png) center/45% no-repeat;opacity:.5}
+.foto img{position:relative}
+
+/* HEADER */
+header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--carta) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .3s}
+header.scorre{border-color:var(--linea)}
+.barra{display:flex;align-items:center;justify-content:space-between;height:72px;gap:20px}
+.marchio{display:flex;align-items:center;gap:12px;text-decoration:none}
+.marchio img{width:48px;height:48px}
+.marchio b{font:600 19px/1.05 Fraunces,serif;display:block}
+.marchio small{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--grigio)}
+nav ul{display:flex;gap:28px;list-style:none}
+nav a{text-decoration:none;font-weight:500;font-size:15px;position:relative}
+nav a::after{content:"";position:absolute;left:0;right:100%;bottom:-4px;height:2px;background:var(--blu);transition:right .25s}
+nav a:hover::after{right:0}
+.barra .btn{padding:10px 18px;font-size:15px}
+.menu-btn{display:none;background:none;border:0;width:44px;height:44px;cursor:pointer}
+.menu-btn span{display:block;width:24px;height:2px;background:var(--inchiostro);margin:5px auto;transition:.25s}
+
+/* HERO */
+.hero{padding:56px 0 80px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(42px,6.2vw,80px);margin:18px 0 22px}
+.hero h1 em{color:var(--blu)}
+.hero p.lead{font-size:20px;color:var(--grigio);max-width:520px}
+.hero .azioni{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.hero-foto{position:relative}
+.hero-foto .foto{aspect-ratio:4/5;--sf:var(--giallo)}
+.timbro{position:absolute;left:-44px;bottom:-36px;width:150px;height:150px;border-radius:50%;background:#fff;box-shadow:0 14px 40px rgba(10,71,240,.18);animation:gira 40s linear infinite}
+.timbro img{width:100%;height:100%;border-radius:50%}
+@keyframes gira{to{transform:rotate(360deg)}}
+.nota-hero{position:absolute;right:-14px;top:28px;background:#fff;border-radius:16px;padding:12px 16px;box-shadow:0 10px 30px rgba(0,0,0,.08);font-size:14px;display:flex;align-items:center;gap:10px;font-weight:500}
+.nota-hero i{width:10px;height:10px;border-radius:50%;background:var(--verde);box-shadow:0 0 0 4px color-mix(in srgb,var(--verde) 30%,transparent)}
+
+/* NASTRO */
+.nastro{background:var(--blu);color:#fff;overflow:hidden;padding:18px 0}
+.nastro div{display:flex;gap:44px;width:max-content;animation:scorri 32s linear infinite;font:400 22px/1 Fraunces,serif;font-style:italic}
+.nastro span{display:flex;align-items:center;gap:44px;white-space:nowrap}
+.nastro img{width:22px;height:22px}
+@keyframes scorri{to{transform:translateX(-50%)}}
+
+section{padding:110px 0}
+.titolo-sez{max-width:720px;margin-bottom:56px}
+.titolo-sez h2{font-size:clamp(34px,4.4vw,56px);margin:14px 0 18px}
+.titolo-sez p{color:var(--grigio);font-size:19px}
+
+/* FATTORIA */
+.fattoria .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;align-items:center}
+.fattoria .collage{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fattoria .collage .foto{aspect-ratio:3/4;--sf:var(--arancio)}
+.fattoria .collage .foto:last-child{margin-top:64px;--sf:var(--verde)}
+.numeri{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.numeri div{border-top:2px solid var(--inchiostro);padding-top:14px}
+.numeri b{font:600 40px/1 Fraunces,serif;display:block;margin-bottom:6px}
+.numeri span{font-size:14px;color:var(--grigio)}
+.fattoria p+p{margin-top:16px}
+.fattoria .testo>p{font-size:18px}
+
+/* FILIERA */
+.filiera{background:#fff;border-block:1px solid var(--linea)}
+.passi{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:p}
+.passo{padding:30px 26px;border-radius:var(--r);background:var(--c);position:relative;min-height:250px;display:flex;flex-direction:column}
+.passo::before{counter-increment:p;content:"0" counter(p);font:600 15px/1 Outfit;letter-spacing:.1em;opacity:.6}
+.passo h3{font-size:28px;margin:auto 0 10px}
+.passo p{font-size:15.5px;line-height:1.5}
+.passo:nth-child(1){--c:var(--verde)}
+.passo:nth-child(2){--c:var(--giallo)}
+.passo:nth-child(3){--c:var(--arancio)}
+.passo:nth-child(4){--c:var(--celeste)}
+
+/* BOTTEGA */
+.scaffale{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.prodotto{background:#fff;border:1px solid var(--linea);border-radius:var(--r);padding:28px;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column;gap:12px}
+.prodotto:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(22,24,29,.07)}
+.prodotto .ico{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:var(--c)}
+.prodotto .ico svg{width:30px;height:30px}
+.prodotto h3{font-size:25px}
+.prodotto p{color:var(--grigio);font-size:15.5px}
+.prodotto.grande{grid-column:span 2;flex-direction:row;padding:0;overflow:hidden;align-items:stretch}
+.prodotto.grande .foto{flex:1 1 50%;border-radius:0;min-height:300px;--sf:var(--corallo)}
+.prodotto.grande .dentro{flex:1 1 50%;padding:32px;display:flex;flex-direction:column;gap:12px;justify-content:center}
+.chip{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.chip span{font-size:13px;padding:6px 12px;border-radius:999px;background:var(--carta);border:1px solid var(--linea)}
+
+/* FIORI */
+.fiori{background:var(--vino);color:#fff}
+.fiori .wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.fiori .etichetta{color:var(--rosa)}
+.fiori h2{font-size:clamp(34px,4.4vw,56px);margin:14px 0 20px}
+.fiori p{color:#ffe3ee;font-size:18px}
+.fiori .coppia{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fiori .coppia .foto{aspect-ratio:3/4;--sf:var(--arancio)}
+.fiori .coppia .foto:last-child{margin-top:56px;--sf:var(--rosa)}
+
+/* DIDATTICA */
+.didattica .scheda{display:grid;grid-template-columns:1fr 1fr;border-radius:32px;overflow:hidden;background:var(--crema)}
+.didattica .scheda>div{padding:56px}
+.didattica .lato{background:var(--verde);display:flex;flex-direction:column;gap:18px;justify-content:center}
+.didattica h2{font-size:clamp(32px,4vw,50px);margin:14px 0 18px}
+.lista{list-style:none;display:grid;gap:14px}
+.lista li{display:flex;gap:14px;align-items:flex-start;font-size:17px;background:rgba(255,255,255,.55);padding:16px 18px;border-radius:16px}
+.lista li img{width:22px;height:22px;flex:none;margin-top:2px}
+
+/* ARRIVARE */
+.arrivare{background:#fff;border-top:1px solid var(--linea)}
+.arrivare .griglia{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;align-items:stretch}
+.indirizzo{background:var(--blu);color:#fff;border-radius:var(--r);padding:40px;display:flex;flex-direction:column;gap:26px}
+.indirizzo .etichetta{color:var(--crema)}
+.indirizzo h3{font-size:36px}
+.indirizzo h3 small{display:block;font:400 18px/1.4 Outfit,sans-serif;color:#cfdcff;margin-top:8px}
+.indirizzo .btn{background:#fff;color:var(--blu);border-color:#fff}
+.indirizzo .btn-vuoto{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
+.indirizzo .btn-vuoto:hover{background:#fff;color:var(--blu)}
+.indirizzo .azioni{display:flex;flex-wrap:wrap;gap:10px}
+.consigli{display:grid;gap:14px;font-size:15.5px;color:#e4ebff}
+.consigli div{display:flex;gap:12px}
+.consigli b{color:#fff}
+.consigli svg{width:22px;height:22px;flex:none;margin-top:1px}
+.mappa{border-radius:var(--r);overflow:hidden;min-height:440px;background:var(--crema);border:1px solid var(--linea)}
+.mappa iframe{width:100%;height:100%;min-height:440px;border:0;display:block}
+
+/* CONTATTI */
+.contatti{text-align:center;padding:120px 0}
+.contatti img.big{width:160px;margin:0 auto 26px}
+.contatti h2{font-size:clamp(36px,5vw,64px);max-width:800px;margin:0 auto 20px}
+.contatti p{color:var(--grigio);font-size:19px;max-width:560px;margin:0 auto 34px}
+.contatti .azioni{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+
+footer{background:var(--inchiostro);color:#c9ccd3;padding:56px 0 34px;font-size:15px}
+footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+footer h4{color:#fff;font:600 13px/1 Outfit;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px}
+footer a{text-decoration:none}
+footer a:hover{color:#fff}
+footer ul{list-style:none;display:grid;gap:8px}
+footer .fine{grid-column:1/-1;border-top:1px solid #2c2f37;padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px;color:#8b8f99}
+.social{display:flex;gap:10px;margin-top:18px}
+.social a{width:42px;height:42px;border-radius:50%;border:1px solid #3a3e48;display:grid;place-items:center}
+.social a:hover{background:var(--blu);border-color:var(--blu)}
+.social svg{width:18px;height:18px;fill:#fff}
+
+/* bottone chiama su mobile */
+.chiama-mobile{display:none}
+
+/* comparsa */
+.rivela{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+.rivela.visto{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .rivela{opacity:1;transform:none}
+  .nastro div,.timbro{animation:none}
+}
+
+@media (max-width:980px){
+  nav{position:fixed;inset:72px 0 auto;background:var(--carta);border-bottom:1px solid var(--linea);padding:12px 16px 24px;transform:translateY(-120%);transition:transform .3s;z-index:-1}
+  nav.aperto{transform:none}
+  nav ul{flex-direction:column;gap:0}
+  nav li a{display:block;padding:14px 4px;border-bottom:1px solid var(--linea);font-size:18px}
+  .menu-btn{display:block}
+  .barra>.btn{display:none}
+  .hero .wrap,.fattoria .wrap,.fiori .wrap,.arrivare .griglia,.didattica .scheda{grid-template-columns:1fr}
+  .hero{padding-top:28px}
+  .hero-foto{max-width:520px;margin:0 auto 20px;width:calc(100% - 30px)}
+  .timbro{width:112px;height:112px;left:-20px;bottom:-26px}
+  .nota-hero{right:-10px}
+  .passi{grid-template-columns:1fr 1fr}
+  .scaffale{grid-template-columns:1fr 1fr}
+  footer .wrap{grid-template-columns:1fr 1fr}
+  footer .wrap>div:first-child{grid-column:1/-1}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  section{padding:76px 0}
+  .titolo-sez{margin-bottom:36px}
+  .passi,.scaffale{grid-template-columns:1fr}
+  .passo{min-height:190px}
+  .prodotto.grande{grid-column:auto;flex-direction:column}
+  .prodotto.grande .foto{min-height:240px}
+  .didattica .scheda>div{padding:32px 24px}
+  .indirizzo{padding:30px 24px}
+  .numeri b{font-size:32px}
+  .fiori .coppia .foto:last-child{margin-top:32px}
+  footer .wrap{grid-template-columns:1fr}
+  .chiama-mobile{display:flex;position:fixed;left:16px;right:16px;bottom:16px;z-index:60;justify-content:center;box-shadow:0 12px 30px rgba(10,71,240,.35)}
+  footer{padding-bottom:100px}
+}
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="wrap barra">
+    <a class="marchio" href="#top" aria-label="Il Casale delle Erbe, torna su">
+      <img src="assets/fiore.png" alt="">
+      <span><b>Il Casale delle Erbe</b><small>Bolzano Vicentino</small></span>
+    </a>
+    <nav id="menu" aria-label="Principale">
+      <ul>
+        <li><a href="#fattoria">La fattoria</a></li>
+        <li><a href="#bottega">Bottega</a></li>
+        <li><a href="#fiori">Fiori</a></li>
+        <li><a href="#didattica">Fattoria didattica</a></li>
+        <li><a href="#arrivare">Come arrivare</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-pieno" href="tel:+390444350329">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+      0444 350329
+    </a>
+    <button class="menu-btn" aria-label="Apri il menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="rivela">
+      <span class="etichetta"><img src="assets/fiore.png" alt="" width="18" height="18"> Fattoria biologica · Erboristeria</span>
+      <h1>Le erbe le coltiviamo noi. <em>Il resto lo fa la stagione.</em></h1>
+      <p class="lead">Tisane, mieli e verdura di campo da quattro ettari biologici a Bolzano Vicentino. Raccogliamo, essicchiamo e miscelamo in fattoria, poi lo trovi in bottega.</p>
+      <div class="azioni">
+        <a class="btn btn-pieno" href="#arrivare">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-6.2-8-12a8 8 0 0 1 16 0c0 5.8-8 12-8 12z"/><circle cx="12" cy="10" r="3"/></svg>
+          Vieni in Via Cafarette
+        </a>
+        <a class="btn btn-vuoto" href="#bottega">Cosa trovi in bottega</a>
+      </div>
+    </div>
+    <div class="hero-foto rivela">
+      <div class="foto"><img src="assets/foto/girasoli.jpg" alt="Girasoli in fiore nei campi del Casale delle Erbe" onerror="this.remove()"></div>
+      <div class="timbro"><img src="assets/logo-circolare.png" alt="Logo Il Casale delle Erbe Vicenza"></div>
+      <div class="nota-hero"><i></i> Certificati biologici</div>
+    </div>
+  </div>
+</section>
+
+<div class="nastro" aria-hidden="true">
+  <div>
+    <span>Erbe officinali <img src="assets/fiore.png" alt=""> Tisane <img src="assets/fiore.png" alt=""> Mieli <img src="assets/fiore.png" alt=""> Verdura a km 0 <img src="assets/fiore.png" alt=""> Fiori di stagione <img src="assets/fiore.png" alt=""> Fattoria didattica <img src="assets/fiore.png" alt=""></span>
+    <span>Erbe officinali <img src="assets/fiore.png" alt=""> Tisane <img src="assets/fiore.png" alt=""> Mieli <img src="assets/fiore.png" alt=""> Verdura a km 0 <img src="assets/fiore.png" alt=""> Fiori di stagione <img src="assets/fiore.png" alt=""> Fattoria didattica <img src="assets/fiore.png" alt=""></span>
+  </div>
+</div>
+
+<!-- FATTORIA -->
+<section class="fattoria" id="fattoria">
+  <div class="wrap">
+    <div class="collage rivela">
+      <div class="foto"><img src="assets/foto/cassetta-1.jpg" alt="Cassetta di verdura di stagione: zucchine, pomodori, cavolo, carote e fagiolini" onerror="this.remove()"></div>
+      <div class="foto"><img src="assets/foto/cassetta-2.jpg" alt="Il raccolto del giorno in cassetta" onerror="this.remove()"></div>
+    </div>
+    <div class="testo rivela">
+      <span class="etichetta">La fattoria</span>
+      <h2 class="titolo-sez" style="margin-bottom:22px;font-size:clamp(34px,4.4vw,56px);margin-top:14px">Tutto è cominciato <em>dalle api</em>.</h2>
+      <p>Il Casale delle Erbe nasce come piccola apicoltura di famiglia. Con gli anni le arnie sono rimaste e intorno sono cresciute le piante officinali, l'orto e i fiori.</p>
+      <p>Oggi Emanuela, Alessandro e la loro famiglia seguono quattro ettari certificati biologici a Bolzano Vicentino. Le erbe le coltiviamo, le raccogliamo e le essicchiamo qui. Le miscele per le tisane nascono in fattoria, una per una.</p>
+      <div class="numeri">
+        <div><b>4 ha</b><span>di terra certificata bio</span></div>
+        <div><b>0 km</b><span>dal campo alla bottega</span></div>
+        <div><b>1</b><span>famiglia, dalle api alla tazza</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILIERA -->
+<section class="filiera">
+  <div class="wrap">
+    <div class="titolo-sez rivela">
+      <span class="etichetta">Dalla pianta alla tazza</span>
+      <h2>Una tisana passa <em>quattro volte</em> dalle nostre mani.</h2>
+      <p>Niente intermediari. Sappiamo da quale fila del campo arriva ogni foglia che metti in infusione.</p>
+    </div>
+    <div class="passi">
+      <div class="passo rivela"><h3>Coltiviamo</h3><p>Piante officinali in campo aperto, con il metodo biologico e il ritmo delle stagioni.</p></div>
+      <div class="passo rivela"><h3>Raccogliamo</h3><p>A mano, nel momento giusto: quando la pianta ha più profumo e più principi attivi.</p></div>
+      <div class="passo rivela"><h3>Essicchiamo</h3><p>Lentamente e al riparo dalla luce, per conservare colore e aroma.</p></div>
+      <div class="passo rivela"><h3>Miscelamo</h3><p>Le nostre tisane nascono in fattoria: dosi pensate per il gusto e per il benessere.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTEGA -->
+<section class="bottega" id="bottega">
+  <div class="wrap">
+    <div class="titolo-sez rivela">
+      <span class="etichetta">La bottega</span>
+      <h2>Quello che trovi <em>sugli scaffali</em>.</h2>
+      <p>Erboristeria e spaccio aziendale nello stesso posto. Quello che non viene dal nostro campo lo scegliamo con la stessa attenzione.</p>
+    </div>
+    <div class="scaffale">
+      <article class="prodotto rivela" style="--c:var(--verde)">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#16181d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h13v4a6 6 0 0 1-6 6h-1a6 6 0 0 1-6-6z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H16"/><path d="M8 2c0 1.5 1 1.5 1 3M12 2c0 1.5 1 1.5 1 3"/></svg></div>
+        <h3>Tisane e infusi</h3>
+        <p>Miscele nostre di erbe officinali essiccate in fattoria: per la sera, la digestione, l'inverno.</p>
+        <div class="chip"><span>Erbe singole</span><span>Miscele</span></div>
+      </article>
+      <article class="prodotto rivela" style="--c:var(--giallo)">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#16181d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10l1 3v8a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3v-8z"/><path d="M8 3h8v4H8z"/><path d="M9 13c1.5 1 4.5 1 6 0"/></svg></div>
+        <h3>Mieli</h3>
+        <p>Dalle nostre arnie: la storia del Casale parte da qui. Mieli biologici e mieli aromatizzati alle erbe.</p>
+        <div class="chip"><span>Biologico</span><span>Aromatizzato</span></div>
+      </article>
+      <article class="prodotto rivela" style="--c:var(--rosa)">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#16181d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4v4l3 4v10a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V10l3-4z"/><path d="M7 14h10"/></svg></div>
+        <h3>Preparati erboristici</h3>
+        <p>L'angolo erboristeria: preparati a base di piante, con un consiglio a voce quando serve.</p>
+      </article>
+      <article class="prodotto grande rivela">
+        <div class="foto"><img src="assets/foto/cesto.jpg" alt="Cesto di verdura biologica: insalata, patate, patate dolci, finocchi" onerror="this.remove()"></div>
+        <div class="dentro">
+          <span class="etichetta">Dall'orto</span>
+          <h3>Frutta e verdura di stagione, a km 0</h3>
+          <p>D'estate zucchine, pomodori cuore di bue e fagiolini; d'autunno insalate, patate e finocchi. Quello che c'è nel campo questa settimana. Chiamaci prima di passare e ti diciamo cosa è appena stato raccolto.</p>
+          <div class="chip"><span>Biologico</span><span>Raccolto del giorno</span><span>Cassette</span></div>
+        </div>
+      </article>
+      <article class="prodotto rivela" style="--c:var(--arancio)">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#16181d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="7" width="12" height="14" rx="2"/><path d="M5 4h14v3H5z"/><path d="M9 12h6M9 16h4"/></svg></div>
+        <h3>La dispensa</h3>
+        <p>Confetture, passata di pomodoro, agrodolci, sottoli e sottaceti, farine. Il raccolto, messo in barattolo.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FIORI -->
+<section class="fiori" id="fiori">
+  <div class="wrap">
+    <div class="rivela">
+      <span class="etichetta">Fiori di stagione</span>
+      <h2>Girasoli d'estate, <em>dalie</em> fino all'autunno.</h2>
+      <p>Tra le file delle officinali crescono anche i fiori. Li raccogliamo freschi per mazzi semplici, colorati, di campo. Chiedi in bottega cosa è in fiore.</p>
+    </div>
+    <div class="coppia rivela">
+      <div class="foto"><img src="assets/foto/dalie-campo.jpg" alt="Dalie arancioni tenute in mano davanti ai campi" onerror="this.remove()"></div>
+      <div class="foto"><img src="assets/foto/dalie-bouquet.jpg" alt="Bouquet di dalie bianche, bordeaux e salmone" onerror="this.remove()"></div>
+    </div>
+  </div>
+</section>
+
+<!-- DIDATTICA -->
+<section class="didattica" id="didattica">
+  <div class="wrap">
+    <div class="scheda rivela">
+      <div>
+        <span class="etichetta">Fattoria didattica e sociale</span>
+        <h2>Il campo è <em>un'aula</em> all'aperto.</h2>
+        <p style="color:var(--grigio);font-size:18px">Accogliamo scuole, gruppi e famiglie per scoprire da vicino le api, le erbe officinali e il lavoro della terra. Siamo anche fattoria sociale: la campagna come luogo di inclusione.</p>
+        <a class="btn btn-pieno" href="mailto:info@ilcasaledelleerbe.it?subject=Visita%20in%20fattoria" style="margin-top:28px">Organizza una visita</a>
+      </div>
+      <div class="lato">
+        <ul class="lista">
+          <li><img src="assets/fiore.png" alt=""> Le api e il miele: come lavora un'arnia</li>
+          <li><img src="assets/fiore.png" alt=""> Riconoscere le erbe officinali con naso e mani</li>
+          <li><img src="assets/fiore.png" alt=""> Dall'essiccazione alla tisana</li>
+          <li><img src="assets/fiore.png" alt=""> L'orto biologico, stagione per stagione</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COME ARRIVARE -->
+<section class="arrivare" id="arrivare">
+  <div class="wrap">
+    <div class="titolo-sez rivela">
+      <span class="etichetta">Come arrivare</span>
+      <h2>Ci trovi in <em>Via Cafarette</em>.</h2>
+      <p>Siamo in campagna a Bolzano Vicentino, a nord-est di Vicenza. Imposta il navigatore qui sotto: ti porta fino al cancello.</p>
+    </div>
+    <div class="griglia">
+      <div class="indirizzo rivela">
+        <span class="etichetta">Indirizzo</span>
+        <h3>Via Cafarette, 6<small>36050 Bolzano Vicentino (VI)</small></h3>
+        <div class="azioni">
+          <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=Via+Cafarette+6,+36050+Bolzano+Vicentino+VI" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 19-9-9 19-2-8z"/></svg>
+            Google Maps
+          </a>
+          <a class="btn btn-vuoto" href="https://waze.com/ul?q=Via%20Cafarette%206%20Bolzano%20Vicentino&navigate=yes" target="_blank" rel="noopener">Waze</a>
+        </div>
+        <div class="consigli">
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span><b>Prima di partire, chiamaci.</b> Ti confermiamo gli orari della bottega e cosa c'è di fresco.</span></div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14l-1.5-6h-11z"/><circle cx="8" cy="19" r="1.5"/><circle cx="16" cy="19" r="1.5"/></svg><span><b>Parcheggio</b> davanti all'azienda.</span></div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span><a href="tel:+390444350329"><b>0444 350329</b></a> · <a href="mailto:info@ilcasaledelleerbe.it">info@ilcasaledelleerbe.it</a></span></div>
+        </div>
+      </div>
+      <div class="mappa rivela">
+        <iframe title="Mappa: Il Casale delle Erbe, Via Cafarette 6, Bolzano Vicentino" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Via%20Cafarette%206%2C%2036050%20Bolzano%20Vicentino%20VI&z=14&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATTI -->
+<section class="contatti">
+  <div class="wrap rivela">
+    <img class="big" src="assets/logo-circolare.png" alt="Il Casale delle Erbe Vicenza">
+    <h2>Passa a trovarci, <em>ti offriamo una tisana</em>.</h2>
+    <p>Per ordini, visite in fattoria o solo per sapere cosa è appena stato raccolto, scrivici o chiamaci.</p>
+    <div class="azioni">
+      <a class="btn btn-pieno" href="tel:+390444350329">Chiama 0444 350329</a>
+      <a class="btn btn-vuoto" href="mailto:info@ilcasaledelleerbe.it">Scrivi una mail</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a class="marchio" href="#top" style="color:#fff"><img src="assets/fiore.png" alt=""><span><b>Il Casale delle Erbe</b><small style="color:#8b8f99">Azienda agricola biologica</small></span></a>
+      <div class="social">
+        <a href="https://www.facebook.com/ilcasaledelleerbe" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H8v4h2v8h4v-8h3l1-4h-4V8z"/></svg></a>
+        <a href="https://www.instagram.com/il_casale_delle_erbe" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM12 2c-2.7 0-3.1 0-4.1.1C4.5 2.2 2.2 4.5 2.1 7.9 2 8.9 2 9.3 2 12s0 3.1.1 4.1c.1 3.4 2.4 5.7 5.8 5.8 1 .1 1.4.1 4.1.1s3.1 0 4.1-.1c3.4-.1 5.7-2.4 5.8-5.8.1-1 .1-1.4.1-4.1s0-3.1-.1-4.1c-.1-3.4-2.4-5.7-5.8-5.8C15.1 2 14.7 2 12 2zm0 1.8c2.7 0 3 0 4 .1 2.5.1 3.9 1.5 4 4 .1 1 .1 1.3.1 4s0 3-.1 4c-.1 2.5-1.5 3.9-4 4-1 .1-1.3.1-4 .1s-3 0-4-.1c-2.5-.1-3.9-1.5-4-4-.1-1-.1-1.3-.1-4s0-3 .1-4c.1-2.5 1.5-3.9 4-4 1-.1 1.3-.1 4-.1z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h4>Dove siamo</h4>
+      <ul><li>Via Cafarette, 6</li><li>36050 Bolzano Vicentino (VI)</li><li><a href="https://www.google.com/maps/dir/?api=1&destination=Via+Cafarette+6,+36050+Bolzano+Vicentino+VI" target="_blank" rel="noopener">Indicazioni stradali →</a></li></ul>
+    </div>
+    <div>
+      <h4>Contatti</h4>
+      <ul><li><a href="tel:+390444350329">0444 350329</a></li><li><a href="mailto:info@ilcasaledelleerbe.it">info@ilcasaledelleerbe.it</a></li></ul>
+    </div>
+    <div class="fine"><span>© 2026 Il Casale delle Erbe di Fattori Emanuela</span><span>Bozza a cura di Rivinity Agency</span></div>
+  </div>
+</footer>
+
+<a class="btn btn-pieno chiama-mobile" href="tel:+390444350329">Chiama la fattoria</a>
+
+<script>
+const head=document.querySelector('header'),menu=document.getElementById('menu'),bt=document.querySelector('.menu-btn');
+addEventListener('scroll',()=>head.classList.toggle('scorre',scrollY>8),{passive:true});
+bt.addEventListener('click',()=>{const a=menu.classList.toggle('aperto');bt.setAttribute('aria-expanded',a)});
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('aperto');bt.setAttribute('aria-expanded',false)}));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visto');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rivela').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
