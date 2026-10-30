@@ -208,8 +208,9 @@ p{text-wrap:pretty}
 .biglietto .matrice .btn{width:100%}
 
 /* ---------- COME ARRIVARE: la mappa vera della strada ---------- */
-.arrivare{position:relative;min-height:100svh;background:var(--crema)}
-.arrivare iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.arrivare{position:relative;min-height:100svh;background:#e4f2df;padding-bottom:120px}
+.mappa{position:absolute;inset:0}
+.mappa svg{width:100%;height:100%;display:block}
 .cartolina-visita{position:relative;z-index:2;width:400px;margin:0 60px 0 auto;top:60px;background:var(--carta);padding:32px 32px 0;display:flex;flex-direction:column;gap:18px}
 .cartolina-visita h2{font-size:clamp(2rem,1.6rem+1.2vw,2.75rem)}
 .cartolina-visita address{font-style:normal;font-size:var(--step-lead);line-height:1.3}
@@ -283,7 +284,8 @@ footer{padding:var(--sez) var(--m) var(--m)}
   .biglietto .matrice{flex-direction:column;text-align:center}
   .biglietto .matrice .btn{width:100%}
   .arrivare{min-height:0;display:flex;flex-direction:column}
-  .arrivare iframe{position:relative;height:70svh}
+  .arrivare{padding-bottom:0}
+  .mappa{position:relative;inset:auto;height:62svh}
   .cartolina-visita{width:auto;margin:-80px 16px 0;top:0;padding:24px 24px 0}
   .cartolina-visita .btn{margin:6px -24px 0}
   .retro .carta{grid-template-columns:1fr}
@@ -483,7 +485,47 @@ footer{padding:var(--sez) var(--m) var(--m)}
 
 <!-- COME ARRIVARE -->
 <section class="arrivare" id="arrivare" aria-labelledby="t-arrivare">
-  <iframe title="Mappa di Via Cafarette 6, Bolzano Vicentino" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Via%20Cafarette%206%2C%2036050%20Bolzano%20Vicentino%20VI&z=15&output=embed"></iframe>
+  <figure class="mappa">
+    <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="mappa-t">
+      <title id="mappa-t">Schema del percorso da Vicenza a Bolzano Vicentino lungo la Postumia, fino al Casale delle Erbe in Via Cafarette 6</title>
+      <rect width="1600" height="900" fill="#e4f2df"/>
+      <g transform="translate(-60 0)">
+      <g fill="#cfe9c8">
+        <path d="M0 0h420l-60 260L0 300z"/><path d="M470 0h380l-40 180-330 40z"/><path d="M1060 0h540v220l-470 30z"/>
+        <path d="M60 360l300-30 40 220-320 40z"/><path d="M980 420l330-40 50 260-340 30z"/><path d="M1380 360h220v300l-180-20z"/>
+        <path d="M520 560l300-30 40 330H520z"/><path d="M900 720l420-20 30 200H930z"/>
+      </g>
+      <g fill="#bfe2b6">
+        <path d="M460 300l320-40 30 200-310 40z"/><path d="M1180 260l300-20 20 120-300 20z"/><path d="M0 620l360-20 20 300H0z"/>
+      </g>
+      <!-- Vicenza -->
+      <path d="M90 560c60-90 230-110 330-60 80 40 90 150 30 220-70 80-250 90-330 30-60-45-80-120-30-190z" fill="#f4d9a0"/>
+      <!-- strade -->
+      <path d="M260 640C420 560 560 520 700 470S900 380 960 330 1180 180 1600 40" fill="none" stroke="#fff" stroke-width="22" stroke-linecap="round"/>
+      <path d="M260 640C420 560 560 520 700 470S900 380 960 330 1180 180 1600 40" fill="none" stroke="#0a47f0" stroke-width="8" stroke-linecap="round" stroke-dasharray="2 18"/>
+      <path d="M960 330c-30 40-40 90-20 150" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round"/>
+      <path d="M0 780C300 740 520 760 800 820s500 40 800 0" fill="none" stroke="#fff" stroke-width="14"/>
+      <!-- Bolzano Vicentino -->
+      <circle cx="960" cy="330" r="64" fill="#f4d9a0"/>
+      <g font-family="Schibsted Grotesk, system-ui, sans-serif" fill="#15161a">
+        <text x="200" y="600" font-size="34" font-weight="600">Vicenza</text>
+        <text x="960" y="438" font-size="28" font-weight="600" text-anchor="middle">Bolzano Vicentino</text>
+        <text x="520" y="455" font-size="22" transform="rotate(-17 520 455)" fill="#0a47f0" font-weight="600">Postumia · circa 10 km</text>
+      </g>
+      <!-- il Casale -->
+      <g transform="translate(860 230)">
+        <circle r="54" fill="#fff" stroke="#0a47f0" stroke-width="6"/>
+        <image href="assets/fiore.png" x="-34" y="-34" width="68" height="68"/>
+        <path d="M-14 50h28L0 78z" fill="#0a47f0"/>
+      </g>
+      <text x="860" y="150" font-family="Gloock, Georgia, serif" font-size="36" fill="#15161a" text-anchor="middle">Il Casale delle Erbe</text>
+      </g>
+      <g font-family="Schibsted Grotesk, system-ui, sans-serif" font-size="22" fill="#45474f">
+        <text x="140" y="80">N ↑</text>
+        <text x="140" y="850">Schema, non in scala</text>
+      </g>
+    </svg>
+  </figure>
   <div class="cartolina-visita" data-r>
     <h2 id="t-arrivare">Via Cafarette 6</h2>
     <address>36050 Bolzano Vicentino (VI)<br>a nord-est di Vicenza</address>
